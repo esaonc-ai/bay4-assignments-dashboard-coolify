@@ -1,4 +1,58 @@
-import type { GrazaCombinedDispatchData, GrazaDispatchRun } from "@/lib/data";
+// Types defined locally — Graza dispatch data not in current Bay 4 data snapshot
+interface GrazaCombinedDispatchData {
+  combinedSummary: {
+    totalOrdersCovered: number;
+    coveragePct: number;
+    totalPlans: number;
+    wavePlans: number;
+    batchPlans: number;
+    labelNotePlans: number;
+    released: number;
+    inProgress: number;
+    failures: number;
+    stuckPlans: number;
+    unassignedTasks: number;
+    exceptions: number;
+  };
+  runs: GrazaDispatchRun[];
+}
+
+interface GrazaDispatchRun {
+  runLabel: string;
+  time: string;
+  runInfo: {
+    date: string;
+    facility: string;
+    customer: string;
+    assignee: string;
+    totalOrdersFound: number;
+  };
+  plans: {
+    planId: string;
+    taskId: string;
+    status: string;
+    method: string;
+    skipPackingScan?: boolean;
+    orderCount: number;
+  }[];
+  labelNoteOrders: {
+    dn: string;
+    planId: string;
+    status: string;
+    note: string;
+  }[];
+  exceptions: {
+    dn: string;
+    reason: string;
+    action: string;
+  }[];
+  summary: {
+    totalPlans: number;
+    totalTasks: number;
+    exceptions: number;
+    issues: string[];
+  };
+}
 
 interface GrazaDispatchSummaryProps {
   data: GrazaCombinedDispatchData;
