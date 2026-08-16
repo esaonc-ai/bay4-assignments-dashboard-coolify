@@ -95,7 +95,7 @@ export default function OperationalMetrics({
               {pctInboundReceived.toFixed(1)}%
             </span>
             <span className="text-xs text-[#71717a]">
-              {scheduledInboundReceived} received of {scheduledInboundOrders.toLocaleString()} scheduled
+              {scheduledInboundReceived} received of {scheduledInboundOrders.toLocaleString()} scheduled (7d)
             </span>
           </>
         ) : (
@@ -121,7 +121,7 @@ export default function OperationalMetrics({
               {pctOutboundLoaded.toFixed(1)}%
             </span>
             <span className="text-xs text-[#71717a]">
-              {scheduledOutboundLoaded} loaded of {scheduledOutboundOrders.toLocaleString()} scheduled
+              {scheduledOutboundLoaded} loaded of {scheduledOutboundOrders.toLocaleString()} scheduled (7d)
             </span>
           </>
         ) : (
