@@ -118,10 +118,12 @@ export default function OperationalMetrics({
         {scheduleAvailable ? (
           <>
             <span className="text-3xl font-bold text-[#7c3aed] tabular-nums">
-              {pctOutboundLoaded.toFixed(1)}%
+              {scheduledOutboundOrders > 0 ? `${pctOutboundLoaded.toFixed(1)}%` : "n/a"}
             </span>
             <span className="text-xs text-[#71717a]">
-              {scheduledOutboundLoaded} loaded of {scheduledOutboundOrders.toLocaleString()} scheduled (today)
+              {scheduledOutboundOrders > 0
+                ? `${scheduledOutboundLoaded} loaded of ${scheduledOutboundOrders.toLocaleString()} scheduled (today)`
+                : `${scheduledOutboundOrders} outbound scheduled (today)`}
             </span>
           </>
         ) : (
