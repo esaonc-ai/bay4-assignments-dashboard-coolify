@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50–DOCK72 &nbsp;|&nbsp; September 3, 2026 &nbsp;|&nbsp; Last refreshed: Sep 03 16:42 PDT
+              DOCK50–DOCK72 &nbsp;|&nbsp; September 3, 2026 &nbsp;|&nbsp; Last refreshed: Sep 03 18:42 PDT
             </p>
           </div>
           {/* Facility badge */}
@@ -134,7 +134,7 @@ export default function DashboardPage() {
           <div className="mt-3 bg-[#141419] border border-[#1e1e2a] rounded-xl overflow-hidden">
             <div className="px-5 py-2.5 bg-[#0a0a0f] border-b border-[#1e1e2a]">
               <span className="text-xs font-semibold text-[#71717a] uppercase tracking-wider">
-                All-Time Assignments (DOCK50–DOCK72) — recomputed 09/03 16:42 PDT
+                All-Time Assignments (DOCK50–DOCK72) — recomputed 09/03 18:42 PDT
               </span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-5 py-3">
@@ -177,7 +177,7 @@ export default function DashboardPage() {
               <span className="text-xs text-[#a1a1aa] block mt-0.5">
                 ARNULFO MUNGUIA (userId=89) has 4 open tasks in Bay 4 DOCK50–DOCK72 — all LOAD
                 outbound (GURUNANDA). All-time (GURUNANDA → Arnulfo): 1,141 closed transactions facility-wide
-                (899 at Bay 4 doors) — fresh rollup, 2026-09-03 16:42 PDT. Below is the current snapshot.
+                (899 at Bay 4 doors) — fresh rollup, 2026-09-03 18:42 PDT. Below is the current snapshot.
               </span>
             </div>
 
@@ -188,16 +188,16 @@ export default function DashboardPage() {
                   Arnulfo Open Bay 4 Tasks (4)
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <strong>DOCK50:</strong> TASK-5360206 (LOAD, IN_PROGRESS, 0h 43m)
+                  <strong>DOCK50:</strong> TASK-5360206 (LOAD, IN_PROGRESS, 2h 43m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK51:</strong> TASK-5359541 (LOAD, IN_PROGRESS, 6h 13m)
+                  <strong>DOCK51:</strong> TASK-5359541 (LOAD, IN_PROGRESS, 8h 13m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK53:</strong> TASK-5359905 (LOAD, IN_PROGRESS, 2h 17m)
+                  <strong>DOCK53:</strong> TASK-5359905 (LOAD, IN_PROGRESS, 4h 17m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK54:</strong> TASK-5338695 (LOAD, STALE, 27d 0h)
+                  <strong>DOCK54:</strong> TASK-5338695 (LOAD, STALE, 27d 2h)
                 </span>
                 <span className="text-xs text-[#71717a] mt-1 italic">
                   Total: 4 tasks (4 LOAD + 0 RECEIVE). All GURUNANDA. All-time: 1,141 (fresh).
@@ -210,13 +210,13 @@ export default function DashboardPage() {
                   Bay 4 Open Assignee Breakdown
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 4 open (4 LOAD — DOCK50,51,53,54)
-                </span>
-                <span className="text-xs text-[#a1a1aa]">
                   <span className="text-[#22c55e] font-semibold">DANIELA GONZALEZ:</span> 6 open (RECEIVE — DOCK62,63,64,65,68,72)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#f59e0b] font-semibold">DANIEL BELTRAN:</span> 1 open (LOAD — DOCK52, 1h 17m)
+                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 4 open (4 LOAD — DOCK50,51,53,54)
+                </span>
+                <span className="text-xs text-[#a1a1aa]">
+                  <span className="text-[#f59e0b] font-semibold">DANIEL BELTRAN:</span> 1 open (LOAD — DOCK52, 3h 17m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
                   <span className="text-[#7c3aed] font-semibold">JEROME ARANDA:</span> 1 open (LOAD NEW — DOCK67, reserved)
@@ -237,7 +237,7 @@ export default function DashboardPage() {
                 <div className="mt-2 pt-2 border-t border-[#1e1e2a]">
                   <span className="text-[10px] text-[#71717a] uppercase tracking-wider">Task Status</span>
                   <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                    9 IN_PROGRESS + 4 NEW (69.2% / 30.8%)
+                    10 IN_PROGRESS + 3 NEW (76.9% / 23.1%)
                   </span>
                 </div>
               </div>
@@ -252,15 +252,15 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">8 Occupied / 4 Reserved / 11 Available</strong> — door utilization sourced from open load/receive tasks: 8 doors with an active IN_PROGRESS task (DOCK50,51,52,53,54,62,64,65), 4 doors with a NEW not-yet-started task (DOCK63,67,68,72), 11 doors with no open load/receive task.</li>
-              <li>Open tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">7 inbound (RECEIVE)</strong> = 13 total. 46% outbound / 54% inbound. 12 doors carry at least one open task (52.2% task occupancy).</li>
+              <li><strong className="text-[#f4f4f6]">9 Occupied / 3 Reserved / 11 Available</strong> — door utilization sourced from open load/receive tasks: 9 doors with an active IN_PROGRESS task (DOCK50,51,52,53,54,62,64,65,68), 3 doors with a NEW not-yet-started task (DOCK63,67,72), 11 doors with no open load/receive task. DOCK68 moved Reserved → Occupied since the 16:42 snapshot (TASK-5360233 started 18:30 PDT).</li>
+              <li>Open tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">7 inbound (RECEIVE)</strong> = 13 total. 46% outbound / 54% inbound. 12 doors carry at least one open task (52.2% task occupancy). Same 13 task IDs as the 16:42 snapshot — no Bay 4 task opened/closed in between.</li>
               <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> all 13 open Bay 4 tasks are GURUNANDA, LLC (ORG-655875). No other customer currently holds an open Bay 4 dock task.</li>
-              <li><strong className="text-[#ef4444]">⚠ SEVERE ANOMALY — DOCK50:</strong> TASK-5090739 ~317d old (Oct 2025) RECEIVE task remains IN_PROGRESS with endTime set and its receipt CLOSED. Assigned to daira gonzalez. Stuck/stale — investigate immediately. DOCK50 also hosts a second open task: Arnulfo&apos;s LOAD TASK-5360206 (0h 43m).</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged/Stale:</strong> TASK-5338695 (DOCK54, Arnulfo) 27d 0h with endTime set and load LOAD-5035487 SHIPPED, yet task IN_PROGRESS.</li>
-              <li><strong className="text-[#22c55e]">★ Schedule % (today, 2026-09-03):</strong> inbound 8 received of 38 scheduled = <strong>21.1%</strong>; outbound 87 loaded/shipped of 100 scheduled = <strong>87.0%</strong>. Facility-wide scope (appointments carry no clean dockId for Bay 4 scoping). Completion computed from today&apos;s appointments: receipts CLOSED, loads SHIPPED/LOADED.</li>
-              <li><strong className="text-[#7c3aed]">★ All-time rollup recomputed:</strong> scanned CLOSED/FORCE_CLOSED load + receive tasks at all 23 Bay-4 door IDs — 3,608 closed transactions across 80 assignees, top assignee ARNULFO MUNGUIA 941. Fresh 09/03 16:42 PDT count.</li>
-              <li><strong className="text-[#7c3aed]">★ GuruNanda → Arnulfo rollup recomputed:</strong> 1,141 closed transactions facility-wide (1,139 LOAD + 2 RECEIVE); 899 at Bay 4 doors (898 LOAD + 1 RECEIVE). Prior run: 1,098 / 895.</li>
-              <li>All core metrics sourced from live WISE/WMS queries, September 3, 2026 ~16:42 PDT. Assignee names via task assigneeUserName; customers via task customer records.</li>
+              <li><strong className="text-[#ef4444]">⚠ SEVERE ANOMALY — DOCK50:</strong> TASK-5090739 ~317d old (started Oct 21 2025) RECEIVE task remains IN_PROGRESS with endTime set (2025-10-22) and its receipt RN-5002143 CLOSED. Assigned to daira gonzalez. Stuck/stale — investigate immediately. DOCK50 also hosts a second open task: Arnulfo&apos;s LOAD TASK-5360206 (2h 43m, load LOAD-5037749 LOADED).</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged/Stale:</strong> TASK-5338695 (DOCK54, Arnulfo) 27d 2h with endTime set (2026-08-10) and load LOAD-5035487 SHIPPED, yet task IN_PROGRESS.</li>
+              <li><strong className="text-[#22c55e]">★ Schedule % (today, 2026-09-03):</strong> inbound 9 received of 39 scheduled = <strong>23.1%</strong>; outbound 90 loaded/shipped of 98 scheduled = <strong>91.8%</strong>. Facility-wide scope (appointments carry no clean dockId for Bay 4 scoping). Receipts/loads whose appointment time is today; completed = receipt CLOSED / load LOADED+SHIPPED. Prior snapshot 16:42 PDT: 8/38 (21.1%) and 87/100 (87.0%).</li>
+              <li><strong className="text-[#7c3aed]">★ All-time rollup recomputed:</strong> scanned CLOSED/FORCE_CLOSED load + receive tasks at all 23 Bay-4 door IDs — 3,608 closed transactions across 80 assignees, top assignee ARNULFO MUNGUIA 941 (unchanged since 16:42).</li>
+              <li><strong className="text-[#7c3aed]">★ GuruNanda → Arnulfo rollup recomputed:</strong> 1,141 closed transactions facility-wide (1,139 LOAD + 2 RECEIVE); 899 at Bay 4 doors (898 LOAD + 1 RECEIVE). Open: 4 LOAD IN_PROGRESS at DOCK50/51/53/54. Verified unchanged since the 16:42 run.</li>
+              <li>All core metrics sourced from live WISE/WMS queries, September 3, 2026 ~18:42 PDT. Assignee names via task assigneeUserName; customers via task customer records (GURUNANDA, LLC per appointment/organization records).</li>
             </ul>
           </div>
         </section>
@@ -270,7 +270,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: September 3, 2026 ~16:42 PDT</span>
+          <span>Last refreshed: September 3, 2026 ~18:42 PDT</span>
         </div>
       </footer>
     </div>
