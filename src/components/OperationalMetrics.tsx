@@ -92,10 +92,12 @@ export default function OperationalMetrics({
         {scheduleAvailable ? (
           <>
             <span className="text-3xl font-bold text-[#22c55e] tabular-nums">
-              {pctInboundReceived.toFixed(1)}%
+              {scheduledInboundOrders > 0 ? `${pctInboundReceived.toFixed(1)}%` : "n/a"}
             </span>
             <span className="text-xs text-[#71717a]">
-              {scheduledInboundReceived} received of {scheduledInboundOrders.toLocaleString()} scheduled (today)
+              {scheduledInboundOrders > 0
+                ? `${scheduledInboundReceived} received of ${scheduledInboundOrders.toLocaleString()} scheduled (today)`
+                : `${scheduledInboundOrders} inbounds scheduled (today)`}
             </span>
           </>
         ) : (
