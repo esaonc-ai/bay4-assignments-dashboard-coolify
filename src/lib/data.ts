@@ -2,7 +2,7 @@
  * Bay 4 Assignments — Authoritative Operational Data
  * Valley View Warehouse (LT_F1), DOCK50–DOCK72
  *
- * TASK DATA: Refreshed 2026-09-05 ~17:08 PDT (live WISE/WMS APIs)
+ * TASK DATA: Refreshed 2026-09-05 ~19:04 PDT (live WISE/WMS APIs)
  *   Sources:
  *     - /wms-bam/wms-location/search-by-paging — door locations + dock/space status
  *     - /wms-bam/outbound/load-task/search-by-paging — open + closed load tasks
@@ -58,7 +58,7 @@ export interface TaskRecord {
 export const TOTAL_DOORS = 23;
 
 // Refresh stamp (America/Los_Angeles)
-export const refreshStamp = "Sep 05 17:08 PDT";
+export const refreshStamp = "Sep 05 19:04 PDT";
 export const refreshDateLong = "September 5, 2026";
 
 export const doors: DoorRecord[] = [
@@ -80,7 +80,7 @@ export const doors: DoorRecord[] = [
     assignee: "ARNULFO MUNGUIA",
     customer: "GURUNANDA, LLC",
     taskIds: ["TASK-5359541"],
-    duration: "2d 6h",
+    duration: "2d 8h",
     anomaly: false,
   },
   {
@@ -89,7 +89,7 @@ export const doors: DoorRecord[] = [
     assignee: "ARNULFO MUNGUIA",
     customer: "GURUNANDA, LLC",
     taskIds: ["TASK-5361270", "TASK-5360939"],
-    duration: "1d 0h",
+    duration: "1d 2h",
     anomaly: true,
   },
   {
@@ -98,7 +98,7 @@ export const doors: DoorRecord[] = [
     assignee: "ARNULFO MUNGUIA",
     customer: "GURUNANDA, LLC",
     taskIds: ["TASK-5360934", "TASK-5338695"],
-    duration: "29d 0h",
+    duration: "29d 2h",
     anomaly: true,
   },
 
@@ -327,9 +327,9 @@ export const assigneeSummaries: AssigneeSummary[] = [
 ];
 
 // All-time assignment counts (CLOSED/FORCE_CLOSED) for Bay 4 DOCK50–DOCK72
-// FRESH rollup 2026-09-05 17:08 PDT — rescanned CLOSED/FORCE_CLOSED load + receive tasks
+// FRESH rollup 2026-09-05 19:04 PDT — rescanned CLOSED/FORCE_CLOSED load + receive tasks
 // across all 23 Bay-4 door IDs (3,639 closed tasks total: 2,718 LOAD + 921 RECEIVE, 80 assignees)
-// — identical to the 13:08 PDT rollup (full rescan; no Bay-4 closures in the window)
+// — identical to the 17:08 PDT rollup (full rescan; no Bay-4 closures in the window)
 export const allTimeClosedTotal = 3639;
 export const allTimeDistinctAssignees = 80;
 export const allTimeAssigneeSummaries: AssigneeSummary[] = [
@@ -362,16 +362,16 @@ export const activeInboundOutboundMix: MixMetric[] = [
 // CLOSED (received) / load status LOADED+SHIPPED (loaded). Facility-wide scope (appointments do
 // not carry a clean dockId for Bay 4 scoping). Saturday Sep 5: only 3 inbound appointments exist
 // (all IMPORTED, none received); ZERO outbound loads have an appointment today → outbound % n/a.
-// No change since the 13:08 PDT snapshot (same 3 receipts, all IMPORTED, as of 17:08 PDT).
+// No change since the 17:08 PDT snapshot (same 3 receipts, all IMPORTED, as of 19:04 PDT).
 export const scheduleAvailable = true;
 export const scheduledInboundOrders = 3;
 export const scheduledOutboundOrders = 0;
 export const scheduledInboundReceived = 0;
 export const scheduledOutboundLoaded = 0;
-export const pctScheduledInboundReceived = (0 / 3) * 100; // 0.0% — 0 of 3 scheduled inbounds received (as of 17:08 PDT)
+export const pctScheduledInboundReceived = (0 / 3) * 100; // 0.0% — 0 of 3 scheduled inbounds received (as of 19:04 PDT)
 export const pctScheduledOutboundLoaded = 0; // n/a — 0 scheduled outbound loads today (no denominator)
 
-// Today’s facility-wide context (2026-09-05, ~17:08 PDT)
+// Today’s facility-wide context (2026-09-05, ~19:04 PDT)
 // receipts created today (createdTime naive-date 09-05): 1 (RN-112654, DELTA ELECTRONICS, CLOSED)
 // receipts CLOSED/FORCE_CLOSED with receivedTime today: 10 (8 CLOSED + 2 FORCE_CLOSED)
 // loads created today (createdTime naive-date 09-05): 1 (LOAD-5038141, LIFEPRO FITNESS, NEW —
@@ -385,9 +385,9 @@ export const facilityWideLoadsShipped = 1;
 // Door occupancy duration: available from task start timestamps
 export const doorDurationsAvailable = true;
 
-// Open task records from fresh WISE data (Sep 05, 2026 ~17:08 PDT)
-// 8 open tasks: 6 LOAD (outbound) + 2 RECEIVE (inbound) — same set as the 13:08 PDT snapshot
-// (no task opened, closed, or moved doors in the window; ages advanced ~4h)
+// Open task records from fresh WISE data (Sep 05, 2026 ~19:04 PDT)
+// 8 open tasks: 6 LOAD (outbound) + 2 RECEIVE (inbound) — same set as the 17:08 PDT snapshot
+// (no task opened, closed, or moved doors in the window; ages advanced ~2h)
 export const assignments: TaskRecord[] = [
   // ────── DOCK50 — inbound severe anomaly + active outbound co-located ──────
   {
@@ -402,7 +402,7 @@ export const assignments: TaskRecord[] = [
     taskId: "TASK-5360206",
     dns: "LOAD IN_PROGRESS",
     customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (2d 1h)",
+    pieces: "IN_PROGRESS (2d 3h)",
     assignee: "ARNULFO MUNGUIA",
     door: "DOCK50",
   },
@@ -412,7 +412,7 @@ export const assignments: TaskRecord[] = [
     taskId: "TASK-5359541",
     dns: "LOAD IN_PROGRESS",
     customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (2d 6h)",
+    pieces: "IN_PROGRESS (2d 8h)",
     assignee: "ARNULFO MUNGUIA",
     door: "DOCK51",
   },
@@ -420,7 +420,7 @@ export const assignments: TaskRecord[] = [
     taskId: "TASK-5361270",
     dns: "LOAD IN_PROGRESS",
     customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (1d 0h)",
+    pieces: "IN_PROGRESS (1d 2h)",
     assignee: "ARNULFO MUNGUIA",
     door: "DOCK53",
   },
@@ -428,7 +428,7 @@ export const assignments: TaskRecord[] = [
     taskId: "TASK-5360934",
     dns: "LOAD IN_PROGRESS",
     customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (1d 3h)",
+    pieces: "IN_PROGRESS (1d 5h)",
     assignee: "ARNULFO MUNGUIA",
     door: "DOCK54",
   },
@@ -436,7 +436,7 @@ export const assignments: TaskRecord[] = [
     taskId: "TASK-5338695",
     dns: "LOAD IN_PROGRESS",
     customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (29d 0h) ⚠ STALE",
+    pieces: "IN_PROGRESS (29d 2h) ⚠ STALE",
     assignee: "ARNULFO MUNGUIA",
     door: "DOCK54",
   },
