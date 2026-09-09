@@ -2,7 +2,7 @@
  * Bay 4 Assignments — Authoritative Operational Data
  * Valley View Warehouse (LT_F1), DOCK50–DOCK72
  *
- * TASK DATA: Refreshed 2026-09-08 ~12:26–12:35 PDT (live WISE/WMS APIs)
+ * TASK DATA: Refreshed 2026-09-09 ~07:53–07:58 PDT (live WISE/WMS APIs)
  *   Sources:
  *     - /wms-bam/wms-location/search-by-paging — door locations + dock/space status
  *     - /wms-bam/outbound/load-task/search-by-paging — open + closed load tasks
@@ -10,40 +10,54 @@
  *     - /wms-bam/appointment/search-by-paging + /wms-bam/inbound/receipt/search-by-paging
  *       + /wms-bam/outbound/load/search-by-paging — scheduled appointments (today, facility-wide)
  *
- * SNAPSHOT INSTANT: 2026-09-08 12:27:00 PDT (America/Los_Angeles; clock-verified 12:27:33 PDT).
- * DELTA vs 2026-09-07 ~18:40 PDT snapshot (~17h47m window):
- *   Bay-4 open task set changed: 8 → 9 (6 LOAD + 3 RECEIVE). CLOSED in window (3 prior Bay-4 opens,
- *   all ARNULFO MUNGUIA / GURUNANDA): TASK-5359541 (LOAD, DOCK51, ended 09-08 09:53:09),
- *   TASK-5360934 (LOAD, DOCK54, ended 09:59:48), TASK-5361270 (LOAD, DOCK53, ended 12:18:54).
- *   OPENED since: TASK-5362385 (LOAD IN_PROGRESS, DOCK51, ARNULFO, 12:14), TASK-5361994 (LOAD
- *   IN_PROGRESS, DOCK52, ARNULFO, 09:40), TASK-5362362 (LOAD IN_PROGRESS, DOCK56, DANIEL BELTRAN,
- *   12:00), TASK-5362261 (RECEIVE IN_PROGRESS, DOCK58, Fatima Ponce, 11:01). Door map changed:
- *   DOCK51/52/56/58 newly occupied; DOCK53 flipped Occupied→Reserved (its IN_PROGRESS task closed);
- *   DOCK67 still reserved. Also 5 additional Bay-4 closures in window (not previously open in the
- *   09-07 18:40 open set): TASK-5361773 (RECEIVE FORCE_CLOSED, Fatima Ponce, 08:37:57), TASK-5361841
- *   (LOAD, DANIEL BELTRAN, 09:06:54), TASK-5361925 (LOAD, DANIEL BELTRAN, 09:57:35), TASK-5362062
- *   (LOAD, JULIO CESAR ALVARADO, 11:58:56), TASK-5362193 (LOAD, DANIEL BELTRAN, 12:00:06) → all-time
- *   Bay-4 closed rollup 3,639 → 3,647 (+8: 2,725 LOAD + 922 RECEIVE; 3,408 CLOSED + 239 FORCE_CLOSED;
- *   80 assignees). GURUNANDA → Arnulfo closed: 1,104 → 1,107 facility-wide (1,105 LOAD + 2 RECEIVE);
- *   901 → 904 Bay-4 (903 LOAD + 1 RECEIVE). Newest closed Bay-4 task: TASK-5361270, endTime local
- *   2026-09-08T12:18:54 = 19:18:54Z (LOAD, DOCK53).
- *   ⚠ LIVE TRANSITION DURING REFRESH (post-snapshot, next refresh will show it): at ~12:29:37 PDT
- *   TASK-5359531 (DOCK67, JEROME ARANDA, LOAD-5037833) was CANCELLED and its load re-created as NEW
- *   task TASK-5362409 at DOCK57 (DANIEL BELTRAN) — i.e., the DOCK67 trailer moved to DOCK57 seconds
- *   after the 12:27 snapshot.
- *   Schedule/context (09-08, facility-wide, queried live ~12:30–12:36 PDT): 34 scheduled inbound
- *   receipts (3 CLOSED-received → 8.8%); 138 scheduled outbound loads (48 LOADED/SHIPPED → 34.8%);
- *   receipts created today 42 (40 by the 12:27 snapshot: RN-5010135 @12:27:43 and RN-5010136
- *   @12:31:27 arrived during the refresh); receipts received today 15 (13 by 12:27: RN-5010094
- *   GURUNANDA @12:27:41 and RN-191511 COME READY FOODS @12:29:08 came in after snapshot); loads
- *   created today 63 (all ≤ 12:16:11); loads LOADED/SHIPPED with endTime today 55 (52 by 12:27;
- *   +LOAD-5037951 @12:31:10, LOAD-5037857 @12:32:31, LOAD-5037787 @12:35:58). No outbound appointment
- *   entity today is stranded (unlike 09-07): every outbound appointment entity's load carries an
- *   appointmentTime in today's window → clean denominator of 138.
- *   Timestamps: BAM APIs return task startTime/endTime/createdTime and receipt times as facility-local
- *   naive (America/Los_Angeles, UTC-7) when item-time-zone=America/Los_Angeles — durations computed
- *   against the 2026-09-08 12:27:00 PDT snapshot instant, same convention as prior snapshots.
- *   Facility "today" windows use item-time-zone America/Los_Angeles (local-day) semantics.
+ * SNAPSHOT INSTANT: 2026-09-09 07:47:00 PDT (America/Los_Angeles; clock-verified 07:47:31 PDT;
+ * task/context states verified live 07:53–07:58 PDT, durations aged to the 07:47:00 instant).
+ * DELTA vs 2026-09-08 ~12:27 PDT snapshot (~19h20m window):
+ *   Bay-4 open task set: 9 → 9 (7 LOAD + 2 RECEIVE). Door map: Occupied 6 / Reserved 0 /
+ *   Available 17 (was 6/2/15). CLOSED in window (11 total Bay-4 closures): TASK-5362261
+ *   (RECEIVE FORCE_CLOSED, DOCK58, Fatima Ponce, 09-08 13:02:24), TASK-5361994 (LOAD, DOCK52,
+ *   ARNULFO MUNGUIA, 13:54:15), TASK-5362409 (LOAD, DOCK57, JULIO CESAR ALVARADO, 13:58:29 —
+ *   the post-snapshot DOCK67→DOCK57 trailer-move task created 12:29:37; closed same afternoon),
+ *   TASK-5362405 (LOAD, DOCK60, DANIEL BELTRAN, 14:07:39), TASK-5362362 (LOAD, DOCK56, DANIEL
+ *   BELTRAN, 14:26:08), TASK-5360206 (LOAD, DOCK50, ARNULFO MUNGUIA, 14:31:23), TASK-5362519
+ *   (LOAD, DOCK57, DANIEL BELTRAN, 14:43:56), TASK-5362469 (LOAD, DOCK58, LUIS VELAZQUEZ,
+ *   15:04:05), TASK-5362574 (LOAD, DOCK56, DANIEL BELTRAN, 15:31:35), TASK-5362231 (RECEIVE
+ *   CLOSED, DOCK66, DANIELA GONZALEZ, 18:43:45), TASK-5361455 (RECEIVE CLOSED, DOCK64, DANIELA
+ *   GONZALEZ, 19:23:51). TASK-5359531 (DOCK67) CANCELLED 09-08 ~12:29:37 (as flagged live last
+ *   refresh) — DOCK67 freed. Doors changed: DOCK62 Available→Occupied (RECEIVE TASK-5360939
+ *   moved DOCK53→DOCK62, IN_PROGRESS since 09-08 13:06 — the RN-191921 receive finally started);
+ *   DOCK53 Reserved→Occupied (TASK-5360939 left; LOAD TASK-5362444 IN_PROGRESS since 13:52 +
+ *   NEW TASK-5363039 created 09-09 07:33); DOCK56 Occupied→Available; DOCK58 Occupied→Available;
+ *   DOCK67 Reserved→Available; DOCK50/51/52/54 remain Occupied but with task changes: DOCK50's
+ *   LOAD TASK-5360206 closed 14:31 → NEW LOAD TASK-5363070 created 09-09 07:45 (co-located with
+ *   the stale 322d RECEIVE); DOCK52's TASK-5361994 closed 13:54 → TASK-5362731 IN_PROGRESS since
+ *   16:19; DOCK51 now hosts TWO IN_PROGRESS LOAD tasks (ARNULFO's TASK-5362385 never closed +
+ *   EDUARDO MEJIA's TASK-5362728 since 15:30); DOCK54 unchanged (TASK-5338695 stale).
+ *   ⚠ LIVE TRANSITIONS DURING THIS REFRESH (post-snapshot, next refresh will show them): first
+ *   loads of the 09-09 wave created from 07:55:28 PDT — LOAD-5038251..LOAD-5038257 (7 by
+ *   07:57:53, all ORG-655875 GURUNANDA, loadNos 50040541–50040547, NEW, no appointmentTime yet);
+ *   RN-5009459 GURUNANDA CLOSED at 07:50:24 (receipts received today 3 → 4).
+ *   Schedule/context (09-09, facility-wide, queried live ~07:54–07:58 PDT): 63 scheduled inbound
+ *   receipts (0 CLOSED-received → 0.0%; 23 OPEN + 40 IMPORTED — incl. overnight 00:00 Mars Food
+ *   ×3 and 03:00–04:00 CMPC USA ×11 still unreceived at 07:47, 08:00 KING'S HAWAIIAN / LENNOX /
+ *   ORGAIN / ALL MARKET-VITA COCO, 10:00 GURUNANDA will-calls RN-5010150 / RN-5010134); 95
+ *   scheduled outbound loads (1 LOADED/SHIPPED → 1.1%: LOAD-5038183 NILO BRANDS SHIPPED 07:14:50;
+ *   84 NEW, 9 WINDOW_CHECKIN_DONE, 1 LOADING); receipts created today 12 (all ≤ 07:45:07 — first
+ *   RN-192080 KARAKA 02:04:21, last LIFEPRO batch RN-5010167..70 07:45:06–07; RN-90545 SOUTHERN
+ *   GLAZER'S CLOSED 07:31); receipts CLOSED/FORCE_CLOSED with receivedTime today 4 (3 by 07:47:
+ *   RN-191519 BABYARK 06:52:51, RN-190217 COME READY 06:53:26, RN-5009978 KING'S HAWAIIAN
+ *   FORCE_CLOSED 07:10:46; +RN-5009459 GURUNANDA 07:50:24 after snapshot); loads created today 0
+ *   at snapshot → 7 by 07:57:53 (wave started 07:55:28); loads LOADED/SHIPPED with endTime today
+ *   1 (LOAD-5038183 07:14:50). Outbound appointment-entity check: 161 appointment entities / 160
+ *   actions today; outbound actions (93 LIVE_LOAD + 4 PICKUP_PRELOAD = 97) currently expose NO
+ *   embedded load references (Sep-8 shape had them), so the per-entity load-strand check cannot
+ *   be reproduced identically; load-side cross-check is clean — 0 appointment-referenced load ids
+ *   missing from the 95-load appointmentTime-today set (0 references exist), denominator of 95
+ *   stands (vs 97 outbound appointment actions).
+ *   Timestamps: BAM APIs return task startTime/endTime/createdTime and receipt times as
+ *   facility-local naive (America/Los_Angeles, UTC-7) when item-time-zone=America/Los_Angeles —
+ *   durations computed against the 2026-09-09 07:47:00 PDT snapshot instant, same convention as
+ *   prior snapshots. Facility "today" windows use item-time-zone America/Los_Angeles (local-day).
  */
 
 export type DoorStatus = "Occupied" | "Reserved" | "Available";
@@ -89,8 +103,8 @@ export interface TaskRecord {
 export const TOTAL_DOORS = 23;
 
 // Refresh stamp (America/Los_Angeles)
-export const refreshStamp = "Sep 08 ~12:27 PDT";
-export const refreshDateLong = "September 8, 2026";
+export const refreshStamp = "Sep 09 ~07:47 PDT";
+export const refreshDateLong = "September 9, 2026";
 
 export const doors: DoorRecord[] = [
   // ══════════════════════════════════════════════════════════════════════════════════════
@@ -99,29 +113,38 @@ export const doors: DoorRecord[] = [
   {
     door: "DOCK50",
     status: "Occupied",
-    assignee: "ARNULFO MUNGUIA / daira gonzalez",
+    assignee: "JEROME ARANDA / daira gonzalez",
     customer: "GURUNANDA, LLC",
-    taskIds: ["TASK-5090739", "TASK-5360206"],
-    duration: "~322d",
+    taskIds: ["TASK-5090739", "TASK-5363070"],
+    duration: "~323d",
     anomaly: true,
   },
   {
     door: "DOCK51",
     status: "Occupied",
-    assignee: "ARNULFO MUNGUIA",
+    assignee: "ARNULFO MUNGUIA / EDUARDO MEJIA",
     customer: "GURUNANDA, LLC",
-    taskIds: ["TASK-5362385"],
-    duration: "~10m",
-    anomaly: false,
+    taskIds: ["TASK-5362385", "TASK-5362728"],
+    duration: "19h 30m",
+    anomaly: true,
   },
   {
     door: "DOCK52",
     status: "Occupied",
     assignee: "ARNULFO MUNGUIA",
     customer: "GURUNANDA, LLC",
-    taskIds: ["TASK-5361994"],
-    duration: "2h 39m",
+    taskIds: ["TASK-5362731"],
+    duration: "15h 27m",
     anomaly: false,
+  },
+  {
+    door: "DOCK53",
+    status: "Occupied",
+    assignee: "ARNULFO MUNGUIA / JEROME ARANDA",
+    customer: "GURUNANDA, LLC",
+    taskIds: ["TASK-5362444", "TASK-5363039"],
+    duration: "17h 54m",
+    anomaly: true,
   },
   {
     door: "DOCK54",
@@ -129,52 +152,25 @@ export const doors: DoorRecord[] = [
     assignee: "ARNULFO MUNGUIA",
     customer: "GURUNANDA, LLC",
     taskIds: ["TASK-5338695"],
-    duration: "31d 20h",
+    duration: "32d 15h",
     anomaly: true,
   },
   {
-    door: "DOCK56",
+    door: "DOCK62",
     status: "Occupied",
-    assignee: "DANIEL BELTRAN",
-    customer: "GURUNANDA, LLC",
-    taskIds: ["TASK-5362362"],
-    duration: "~4m",
-    anomaly: false,
-  },
-  {
-    door: "DOCK58",
-    status: "Occupied",
-    assignee: "Fatima Ponce",
-    customer: "GURUNANDA, LLC",
-    taskIds: ["TASK-5362261"],
-    duration: "~49m",
-    anomaly: false,
-  },
-
-  // ══════════════════════════════════════════════════════════════════════════════════════
-  // RESERVED — NEW (assigned, not started) load/receive task (2 doors)
-  // ══════════════════════════════════════════════════════════════════════════════════════
-  {
-    door: "DOCK53",
-    status: "Reserved",
     assignee: "RUFINO MUNGUIA",
     customer: "GURUNANDA, LLC",
     taskIds: ["TASK-5360939"],
-    duration: null,
-    anomaly: false,
-  },
-  {
-    door: "DOCK67",
-    status: "Reserved",
-    assignee: "JEROME ARANDA",
-    customer: "GURUNANDA, LLC",
-    taskIds: ["TASK-5359531"],
-    duration: null,
+    duration: "18h 40m",
     anomaly: false,
   },
 
   // ══════════════════════════════════════════════════════════════════════════════════════
-  // AVAILABLE — no open load/receive task (15 doors)
+  // RESERVED — NEW (assigned, not started) load/receive task (0 doors)
+  // ══════════════════════════════════════════════════════════════════════════════════════
+
+  // ══════════════════════════════════════════════════════════════════════════════════════
+  // AVAILABLE — no open load/receive task (17 doors)
   // ══════════════════════════════════════════════════════════════════════════════════════
   {
     door: "DOCK55",
@@ -186,7 +182,25 @@ export const doors: DoorRecord[] = [
     anomaly: false,
   },
   {
+    door: "DOCK56",
+    status: "Available",
+    assignee: null,
+    customer: null,
+    taskIds: [],
+    duration: null,
+    anomaly: false,
+  },
+  {
     door: "DOCK57",
+    status: "Available",
+    assignee: null,
+    customer: null,
+    taskIds: [],
+    duration: null,
+    anomaly: false,
+  },
+  {
+    door: "DOCK58",
     status: "Available",
     assignee: null,
     customer: null,
@@ -214,15 +228,6 @@ export const doors: DoorRecord[] = [
   },
   {
     door: "DOCK61",
-    status: "Available",
-    assignee: null,
-    customer: null,
-    taskIds: [],
-    duration: null,
-    anomaly: false,
-  },
-  {
-    door: "DOCK62",
     status: "Available",
     assignee: null,
     customer: null,
@@ -259,6 +264,15 @@ export const doors: DoorRecord[] = [
   },
   {
     door: "DOCK66",
+    status: "Available",
+    assignee: null,
+    customer: null,
+    taskIds: [],
+    duration: null,
+    anomaly: false,
+  },
+  {
+    door: "DOCK67",
     status: "Available",
     assignee: null,
     customer: null,
@@ -350,179 +364,181 @@ export const kpiMetrics: KpiMetric[] = [
 ];
 
 // Open assignee task counts - Bay 4 DOCK50-DOCK72, open load/receive dock tasks (9 open tasks at
-// the 2026-09-08 12:27 PDT snapshot: 4 new since 09-07 18:40; 3 prior opens closed in window)
+// the 2026-09-09 07:47 PDT snapshot: 7 LOAD + 2 RECEIVE on 6 occupied doors; no reserved doors)
 
 export const assigneeSummaries: AssigneeSummary[] = [
   { name: "ARNULFO MUNGUIA", taskCount: 4 },
-  { name: "DANIEL BELTRAN", taskCount: 1 },
+  { name: "JEROME ARANDA", taskCount: 2 },
+  { name: "EDUARDO MEJIA", taskCount: 1 },
   { name: "daira gonzalez", taskCount: 1 },
-  { name: "Fatima Ponce", taskCount: 1 },
   { name: "RUFINO MUNGUIA", taskCount: 1 },
-  { name: "JEROME ARANDA", taskCount: 1 },
 ];
 
 // All-time assignment counts (CLOSED/FORCE_CLOSED) for Bay 4 DOCK50–DOCK72
-// FRESH rollup 2026-09-08 ~12:27 PDT — rescanned CLOSED/FORCE_CLOSED load + receive tasks at all
-// 23 Bay-4 door IDs with retry (0 dropped pages): 3,647 closed tasks total (2,725 LOAD + 922 RECEIVE;
-// 3,408 CLOSED + 239 FORCE_CLOSED), 80 assignees. +8 vs the 09-07 18:40 PDT rollup (3,639) — eight
-// Bay-4 closures in the window (listed in the file header); newest closed task endTime now
-// 2026-09-08T12:18:54 local = 19:18:54Z (TASK-5361270, LOAD, DOCK53, ARNULFO MUNGUIA — previously
-// 09-04T23:13:25 local / TASK-5361283).
-export const allTimeClosedTotal = 3647;
+// FRESH rollup 2026-09-09 ~07:54 PDT — rescanned CLOSED/FORCE_CLOSED load + receive tasks at all
+// 23 Bay-4 door IDs with retry (0 dropped pages): 3,658 closed tasks total (2,733 LOAD CLOSED +
+// 685 RECEIVE CLOSED + 240 RECEIVE FORCE_CLOSED; no LOAD FORCE_CLOSED), 80 assignees. +11 vs the
+// 09-08 12:27 PDT rollup (3,647) — eleven Bay-4 closures in the window (listed in the file
+// header); newest closed task endTime now 2026-09-08T19:23:51 local = 2026-09-09T02:23:51Z
+// (TASK-5361455, RECEIVE, DOCK64, DANIELA GONZALEZ — previously TASK-5361270 09-08T12:18:54).
+export const allTimeClosedTotal = 3658;
 export const allTimeDistinctAssignees = 80;
 export const allTimeAssigneeSummaries: AssigneeSummary[] = [
-  { name: "ARNULFO MUNGUIA", taskCount: 946 },
-  { name: "DANIEL BELTRAN", taskCount: 918 },
-  { name: "DANIELA GONZALEZ", taskCount: 366 },
+  { name: "ARNULFO MUNGUIA", taskCount: 948 },
+  { name: "DANIEL BELTRAN", taskCount: 922 },
+  { name: "DANIELA GONZALEZ", taskCount: 368 },
   { name: "GEORGE LC BROWN", taskCount: 151 },
   { name: "RENATO ROSALES GARCIA", taskCount: 149 },
   { name: "Caren Cubides", taskCount: 147 },
-  { name: "JULIO CESAR ALVARADO", taskCount: 112 },
+  { name: "JULIO CESAR ALVARADO", taskCount: 113 },
   { name: "MARTIN MUNGUIA", taskCount: 106 },
-  { name: "Fatima Ponce", taskCount: 89 },
+  { name: "Fatima Ponce", taskCount: 90 },
   { name: "David Ramirez Selva", taskCount: 76 },
 ];
 
-// Mix: 6 LOAD (outbound) + 3 RECEIVE (inbound) = 9 open tasks at Bay 4 doors (2026-09-08 12:27 PDT
-// snapshot). Prior 09-07 18:40 PDT snapshot was 6 LOAD + 2 RECEIVE = 8.
+// Mix: 7 LOAD (outbound) + 2 RECEIVE (inbound) = 9 open tasks at Bay 4 doors (2026-09-09 07:47 PDT
+// snapshot). Prior 09-08 12:27 PDT snapshot was 6 LOAD + 3 RECEIVE = 9 (6 doors then vs 6 now).
 export const inboundOutboundMix: MixMetric[] = [
-  { label: "Outbound", count: 6, total: 9 },
-  { label: "Inbound", count: 3, total: 9 },
+  { label: "Outbound", count: 7, total: 9 },
+  { label: "Inbound", count: 2, total: 9 },
 ];
 
 export const activeInboundOutboundMix: MixMetric[] = [
-  { label: "Outbound", count: 6, total: 9 },
-  { label: "Inbound", count: 3, total: 9 },
+  { label: "Outbound", count: 7, total: 9 },
+  { label: "Inbound", count: 2, total: 9 },
 ];
 
-// Schedule: today's (2026-09-08, Tuesday) facility-wide — receipts/loads whose appointment time is
-// today (facility-local day, item-time-zone America/Los_Angeles; same window convention as prior
-// snapshots: appointmentTimeFrom/To = 2026-09-08T00:00:00 → 23:59:59 on receipt search;
+// Schedule: today's (2026-09-09, Wednesday) facility-wide — receipts/loads whose appointment time
+// is today (facility-local day, item-time-zone America/Los_Angeles; same window convention as prior
+// snapshots: appointmentTimeFrom/To = 2026-09-09T00:00:00 → 23:59:59 on receipt search;
 // appointmentTimePeriod on load search). Completed = receipt status CLOSED (received) / load status
 // LOADED+SHIPPED (loaded). Facility-wide scope (appointments do not carry a clean dockId for Bay 4
-// scoping). Queried live ~12:30–12:36 PDT.
-// Tuesday Sep 8: 34 scheduled inbound receipts → 3 received (RN-5010014 / RN-5009995 / RN-5009993,
-// all LENNOX INDUSTRIES INC., received 09:21:58–11:42:29) = 8.8%. Remaining: 10 IN_PROGRESS,
-// 7 OPEN, 14 IMPORTED (incl. GURUNANDA will-call RN-5010129 12:00 / RN-191971 13:00 / RN-5010128
-// 21:30 / RN-5010127 23:30 and midnight-slot RN-192044 / RN-192045). 138 scheduled outbound loads →
-// 48 LOADED/SHIPPED (38 SHIPPED + 10 LOADED; 69 NEW, 14 LOADING, 7 WINDOW_CHECKIN_DONE) = 34.8%.
-// Unlike 09-07, no outbound appointment entity today is stranded: all outbound appointment-entity
-// loads carry an appointmentTime in today's window (clean denominator of 138).
+// scoping). Queried live ~07:54–07:58 PDT (early morning — rates will climb through the day).
+// Wednesday Sep 9: 63 scheduled inbound receipts → 0 received (0 CLOSED; 23 OPEN + 40 IMPORTED —
+// overnight 00:00 Mars Food RN-5010040/44/50 and 03:00–04:00 CMPC USA ×11 still unreceived at
+// 07:47; 08:00 KING'S HAWAIIAN RN-5010164/RN-5009807, LENNOX RN-5009989, ORGAIN RN-5009602,
+// ALL MARKET/VITA COCO RN-5010070; 09:00 LENNOX RN-5009985, SMEG RN-191410; 10:00 GURUNANDA
+// will-calls RN-5010150 / RN-5010134, BOUNDLESS RN-192046) = 0.0%. 95 scheduled outbound loads →
+// 1 LOADED/SHIPPED (LOAD-5038183 SHIPPED 07:14:50; 84 NEW, 9 WINDOW_CHECKIN_DONE, 1 LOADING) =
+// 1.1%. Outbound denominator check: 161 appointment entities / 160 actions today (97 outbound:
+// 93 LIVE_LOAD + 4 PICKUP_PRELOAD — none expose embedded load refs yet, so the Sep-8 per-entity
+// strand check isn't reproducible; load side clean: 0 referenced load ids missing from the 95).
 export const scheduleAvailable = true;
-export const scheduledInboundOrders = 34;
-export const scheduledOutboundOrders = 138;
-export const scheduledInboundReceived = 3;
-export const scheduledOutboundLoaded = 48;
-export const pctScheduledInboundReceived = 8.8; // 3 of 34 scheduled inbounds received today
-export const pctScheduledOutboundLoaded = 34.8; // 48 of 138 scheduled outbound loads loaded today
+export const scheduledInboundOrders = 63;
+export const scheduledOutboundOrders = 95;
+export const scheduledInboundReceived = 0;
+export const scheduledOutboundLoaded = 1;
+export const pctScheduledInboundReceived = 0.0; // 0 of 63 scheduled inbounds received (by 07:47 PDT)
+export const pctScheduledOutboundLoaded = 1.1; // 1 of 95 scheduled outbound loads loaded (by 07:47 PDT)
 
-// Today's facility-wide context (2026-09-08, facility-local day; queried live ~12:30–12:36 PDT)
-// receipts created today: 42 by query end (40 by the 12:27:00 snapshot instant; RN-5010135 @12:27:43
-//   and RN-5010136 @12:31:27 arrived during the refresh) — VAONIS RN-192025 IMPORTED 05:08; ELEVATE
-//   BRANDS RN-192026 CLOSED 05:11 / RN-192041 IMPORTED 08:58; THE OUAI RN-5010119 OPEN 09:14; COME
-//   READY FOODS RN-192042 IMPORTED 10:15 / RN-192047 IMPORTED 12:11; Mars Food RN-5010120 OPEN 10:39;
-//   GURUNANDA RN-192043 10:54 + RN-192044/192045 11:12/11:18 + RN-5010127..RN-5010136 11:45–12:31
-//   (IMPORTED, appointments 09-08 21:30/23:30/00:00/12:00 and 09-09) ; BOUNDLESS EC RN-192046 11:29;
-//   ORGAIN RN-5010121 OPEN 11:21; ALL MARKET / VITA COCO batch RN-192048..RN-192066 (19 receipts,
-//   IMPORTED, 12:18:20–12:18:42); EMBER RN-192067 IMPORTED 12:26:44
-// receipts CLOSED/FORCE_CLOSED with receivedTime today: 15 by query end (13 by 12:27:00; RN-5010094
-//   GURUNANDA @12:27:41 and RN-191511 COME READY FOODS @12:29:08 after snapshot) — ELEVATE RN-192026
-//   06:54; GURUNANDA RN-5010021 08:43, RN-5009326 11:56, RN-5010081 12:10; VITA COCO RN-189443/189452
-//   09:09/09:13, RN-189769 09:52, RN-189836 11:14; LENNOX RN-5009995/5009993/5010014 09:21/10:19/11:42;
-//   AMIEE LYNN RN-5010092 FORCE_CLOSED 09:49, RN-5010091 FORCE_CLOSED 12:11
-// loads created today (createdTime local-day 09-08): 63 — first LOAD-5038143 @07:50:34 (was 0 on
-//   09-07; newest load facility-wide is now LOAD-5038205, NEW, created 12:16:11 PDT; GURUNANDA SP BOL
-//   and WILL CALL wave 09:02–09:08, VITA COCO/MAMMA CHIA/ALL MARKET waves through 12:16)
-// loads LOADED/SHIPPED with endTime today: 55 by query end (52 by 12:27:00; +LOAD-5037951 @12:31:10,
-//   LOAD-5037857 @12:32:31, LOAD-5037787 @12:35:58) — first LOAD-5037878 ORGAIN @07:48; 8 loads of
-//   TASK-5360934 shipped 09:59:48, 6 loads of TASK-5361270 shipped 12:18:54, 1 load of TASK-5359541
-//   shipped 09:53:09 (the three Bay-4 task closures)
-export const facilityWideReceiptsCreated = 42; // 40 by 12:27:00 snapshot; 2 more during refresh
-export const facilityWideReceiptsReceived = 15; // 13 by 12:27:00 snapshot; 2 more during refresh
-export const facilityWideLoadsCreated = 63;
-export const facilityWideLoadsShipped = 55; // 52 by 12:27:00 snapshot; 3 more by 12:36
+// Today's facility-wide context (2026-09-09, facility-local day; queried live ~07:54–07:58 PDT)
+// receipts created today: 12 (all by 07:45:07 — none after the 07:47:00 snapshot instant):
+//   RN-192080 KARAKA EXCEPTION 02:04:21; RN-192081 VAONIS IMPORTED 03:07:03; RN-192099/192100/192101
+//   KARAKA IMPORTED 05:20:33–34; RN-192105 ALL MARKET/VITA COCO IMPORTED 07:19:19; RN-192106 FLAG &
+//   ANTHEM EXCEPTION 07:22:33; RN-90545 SOUTHERN GLAZER'S WINE AND SPIRITS CLOSED 07:31:50;
+//   RN-5010167..RN-5010170 LIFEPRO FITNESS IMPORTED 07:45:06–07
+// receipts CLOSED/FORCE_CLOSED with receivedTime today: 4 by query end (3 by 07:47:00; RN-5009459
+//   GURUNANDA @07:50:24 after snapshot) — RN-191519 BABYARK INC CLOSED 06:52:51; RN-190217 COME
+//   READY FOODS LLC CLOSED 06:53:26; RN-5009978 KING'S HAWAIIAN FORCE_CLOSED 07:10:46; RN-5009459
+//   GURUNANDA CLOSED 07:50:24
+// loads created today (createdTime local-day 09-09): 0 by the 07:47:00 snapshot; 7 by 07:57:53 —
+//   first LOAD-5038251 @07:55:28 (wave started during this refresh; LOAD-5038251..5038257 through
+//   07:57:34, all ORG-655875 GURUNANDA, loadNos 50040541–50040547, NEW, no appointmentTime yet;
+//   newest load facility-wide before the wave was LOAD-5038250, NEW, created 09-08 17:01:36)
+// loads LOADED/SHIPPED with endTime today: 1 — LOAD-5038183 NILO BRANDS SHIPPED 07:14:50 (appt
+//   07:00; loadNo W-2682226_SP BOL; task TASK-5363026 CLOSED)
+export const facilityWideReceiptsCreated = 12; // unchanged at snapshot (all ≤ 07:45:07)
+export const facilityWideReceiptsReceived = 4; // 3 by 07:47:00 snapshot; +RN-5009459 @07:50:24 during refresh
+export const facilityWideLoadsCreated = 7; // 0 by 07:47:00 snapshot; wave started 07:55:28 (7 by 07:57:53)
+export const facilityWideLoadsShipped = 1; // LOAD-5038183 @07:14:50 (unchanged at snapshot)
 
 // Door occupancy duration: available from task start timestamps
 export const doorDurationsAvailable = true;
 
-// Open task records from fresh WISE data (Sep 08, 2026 ~12:27 PDT snapshot)
-// 9 open tasks: 6 LOAD (outbound) + 3 RECEIVE (inbound)
+// Open task records from fresh WISE data (Sep 09, 2026 ~07:47 PDT snapshot)
+// 9 open tasks: 7 LOAD (outbound) + 2 RECEIVE (inbound)
 export const assignments: TaskRecord[] = [
-  // ────── DOCK50 — inbound severe anomaly + active outbound co-located ──────
+  // ────── DOCK50 — stale 322d RECEIVE + NEW live-load co-located ──────
   {
     taskId: "TASK-5090739",
     dns: "RECEIVE IN_PROGRESS",
     customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (~322d) ⚠ STALE",
+    pieces: "IN_PROGRESS (~323d) ⚠ STALE",
     assignee: "daira gonzalez",
     door: "DOCK50",
   },
   {
-    taskId: "TASK-5360206",
-    dns: "LOAD IN_PROGRESS",
-    customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (4d 20h)",
-    assignee: "ARNULFO MUNGUIA",
-    door: "DOCK50",
-  },
-
-  // ────── OUTBOUND / LOAD ──────
-  {
-    taskId: "TASK-5362385",
-    dns: "LOAD IN_PROGRESS",
-    customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (~10m)",
-    assignee: "ARNULFO MUNGUIA",
-    door: "DOCK51",
-  },
-  {
-    taskId: "TASK-5361994",
-    dns: "LOAD IN_PROGRESS",
-    customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (2h 39m)",
-    assignee: "ARNULFO MUNGUIA",
-    door: "DOCK52",
-  },
-  {
-    taskId: "TASK-5338695",
-    dns: "LOAD IN_PROGRESS",
-    customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (31d 20h) ⚠ STALE",
-    assignee: "ARNULFO MUNGUIA",
-    door: "DOCK54",
-  },
-  {
-    taskId: "TASK-5362362",
-    dns: "LOAD IN_PROGRESS",
-    customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (~4m)",
-    assignee: "DANIEL BELTRAN",
-    door: "DOCK56",
-  },
-  {
-    taskId: "TASK-5359531",
+    taskId: "TASK-5363070",
     dns: "LOAD NEW",
     customer: "GURUNANDA, LLC",
     pieces: "NEW",
     assignee: "JEROME ARANDA",
-    door: "DOCK67",
+    door: "DOCK50",
   },
 
-  // ────── INBOUND / RECEIVE ──────
+  // ────── DOCK51 — two IN_PROGRESS LOAD tasks co-located ──────
   {
-    taskId: "TASK-5362261",
-    dns: "RECEIVE IN_PROGRESS",
+    taskId: "TASK-5362385",
+    dns: "LOAD IN_PROGRESS",
     customer: "GURUNANDA, LLC",
-    pieces: "IN_PROGRESS (~49m)",
-    assignee: "Fatima Ponce",
-    door: "DOCK58",
+    pieces: "IN_PROGRESS (19h 30m)",
+    assignee: "ARNULFO MUNGUIA",
+    door: "DOCK51",
   },
   {
-    taskId: "TASK-5360939",
-    dns: "RECEIVE NEW",
+    taskId: "TASK-5362728",
+    dns: "LOAD IN_PROGRESS",
+    customer: "GURUNANDA, LLC",
+    pieces: "IN_PROGRESS (16h 16m)",
+    assignee: "EDUARDO MEJIA",
+    door: "DOCK51",
+  },
+
+  // ────── DOCK52 ──────
+  {
+    taskId: "TASK-5362731",
+    dns: "LOAD IN_PROGRESS",
+    customer: "GURUNANDA, LLC",
+    pieces: "IN_PROGRESS (15h 27m)",
+    assignee: "ARNULFO MUNGUIA",
+    door: "DOCK52",
+  },
+
+  // ────── DOCK53 — IN_PROGRESS + NEW co-located ──────
+  {
+    taskId: "TASK-5362444",
+    dns: "LOAD IN_PROGRESS",
+    customer: "GURUNANDA, LLC",
+    pieces: "IN_PROGRESS (17h 54m)",
+    assignee: "ARNULFO MUNGUIA",
+    door: "DOCK53",
+  },
+  {
+    taskId: "TASK-5363039",
+    dns: "LOAD NEW",
     customer: "GURUNANDA, LLC",
     pieces: "NEW",
-    assignee: "RUFINO MUNGUIA",
+    assignee: "JEROME ARANDA",
     door: "DOCK53",
+  },
+
+  // ────── DOCK54 ──────
+  {
+    taskId: "TASK-5338695",
+    dns: "LOAD IN_PROGRESS",
+    customer: "GURUNANDA, LLC",
+    pieces: "IN_PROGRESS (32d 15h) ⚠ STALE",
+    assignee: "ARNULFO MUNGUIA",
+    door: "DOCK54",
+  },
+
+  // ────── DOCK62 ──────
+  {
+    taskId: "TASK-5360939",
+    dns: "RECEIVE IN_PROGRESS",
+    customer: "GURUNANDA, LLC",
+    pieces: "IN_PROGRESS (18h 40m)",
+    assignee: "RUFINO MUNGUIA",
+    door: "DOCK62",
   },
 ];
