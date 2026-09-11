@@ -134,7 +134,7 @@ export default function DashboardPage() {
           <div className="mt-3 bg-[#141419] border border-[#1e1e2a] rounded-xl overflow-hidden">
             <div className="px-5 py-2.5 bg-[#0a0a0f] border-b border-[#1e1e2a]">
               <span className="text-xs font-semibold text-[#71717a] uppercase tracking-wider">
-                All-Time Assignments (DOCK50–DOCK72) — recomputed live 09/11 ~11:47 PDT (3,699 closed / 81 assignees)
+                All-Time Assignments (DOCK50–DOCK72) — recomputed live 09/11 ~19:05 UTC (3,701 closed / 81 assignees)
               </span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-5 py-3">
@@ -175,7 +175,7 @@ export default function DashboardPage() {
                 ★ No exact literal match for &quot;Guru live out / in assign to Arnulfo&quot; — interpreted as GURUNANDA dock load/receive transactions assigned to Arnulfo
               </span>
               <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                ARNULFO MUNGUIA (userId=89) has 2 open tasks at Bay 4 DOCK50–DOCK72 — 1 LOAD outbound (GURUNANDA) + 1 NEW receive (KARAKA, ORG-585450), both at DOCK54. All-time (GURUNANDA → Arnulfo): 871 closed transactions at Bay-4 doors (870 LOAD + 1 RECEIVE) — re-derived live 2026-09-11 ~11:48 PDT. Below is the current snapshot.
+                ARNULFO MUNGUIA (userId=89) has 2 open tasks at Bay 4 DOCK50–DOCK72 — 1 LOAD outbound (GURUNANDA) + 1 NEW receive (KARAKA, ORG-585450), both at DOCK54. All-time (GURUNANDA → Arnulfo): 921 closed transactions at Bay-4 doors (920 LOAD + 1 RECEIVE) — reconciled &amp; re-derived live 2026-09-11 row-based, reproduced 3/3 passes. Below is the current snapshot.
               </span>
             </div>
 
@@ -192,7 +192,7 @@ export default function DashboardPage() {
                   <strong>DOCK54:</strong> TASK-5364490 (RECEIVE, NEW — RN-191995 IMPORTED)
                 </span>
                 <span className="text-xs text-[#71717a] mt-1 italic">
-                  Total: 2 tasks (1 LOAD + 1 RECEIVE). 1 GURUNANDA + 1 KARAKA. All-time: 871 at Bay-4 doors (870 LOAD + 1 RECEIVE, re-derived live ~11:48 PDT). Facility-wide, Arnulfo holds 3 open tasks (1 LOAD + 2 RECEIVE); the third, TASK-5351470 (RECEIVE IN_PROGRESS, KARAKA), sits at dock 541 — outside Bay 4 and therefore out of scope here.
+                  Total: 2 tasks (1 LOAD + 1 RECEIVE). 1 GURUNANDA + 1 KARAKA. All-time: 921 at Bay-4 doors (920 LOAD + 1 RECEIVE, reconciled row-based ~11:45 PDT). Facility-wide, Arnulfo (uid 89) holds 3 open tasks (1 LOAD + 2 RECEIVE); the third, TASK-5351470 (RECEIVE IN_PROGRESS, KARAKA), sits at dock 541 — outside Bay 4 and therefore out of scope here.
                 </span>
               </div>
 
@@ -259,7 +259,9 @@ export default function DashboardPage() {
               <li><strong className="text-[#f59e0b]">Long-running watch (not flagged as anomaly):</strong> DOCK57 TASK-5364028 has aged 2d 2h 24m (started 2026-09-09T16:20:24Z) with RN-5010136 still IN_PROGRESS — it is a scheduled 09-09 appointment that has drifted two days.</li>
               <li><strong className="text-[#f59e0b]">Freshness note:</strong> DOCK56 TASK-5365578 started at 2026-09-11T11:43:50Z, only ~51 seconds before the snapshot instant; it appeared as NEW in an earlier probe and IN_PROGRESS in the final snapshot.</li>
               <li><strong className="text-[#22c55e]">Schedule % (today, 2026-09-11 — Friday, facility-wide, ~11:44 PDT):</strong> scheduled inbounds 32 → 3.1% (1 CLOSED-received; the remaining day is 25 IMPORTED + 6 IN_PROGRESS); scheduled outbound loads 119 → 18.5% (22 LOADED/SHIPPED). The outbound load search honours only a date-boundary appointmentTimeFrom filter, so today&apos;s denominator is the 2026-09-11 vs 2026-09-12 from-population difference (389 − 270 = 119); the status split for the day (NEW 67 + WINDOW_CHECKIN_DONE 19 + LOADING 11 + LOADED 1 + SHIPPED 21) sums exactly to 119, and the loaded count is LOADED (1−0) + SHIPPED (23−2) = 22.</li>
-              <li><strong className="text-[#a1a1aa]">All-time rollup RE-DERIVED LIVE this refresh</strong> (18:46:43Z–18:47:41Z): <strong className="text-[#f4f4f6]">3,699</strong> closed (CLOSED + FORCE_CLOSED) Bay-4 transactions across 81 assignees — per-door totalCount summed for load-task + receive-task over all 23 doors. Top assignee ARNULFO MUNGUIA 955 (was 954). GURUNANDA → Arnulfo at Bay-4 doors likewise re-derived live: <strong className="text-[#f4f4f6]">871</strong> (870 LOAD + 1 RECEIVE).</li>
+              <li><strong className="text-[#a1a1aa]">All-time rollup RE-DERIVED LIVE this refresh (row-based, reproduced 3/3 passes)</strong>: <strong className="text-[#f4f4f6]">3,701</strong> closed (CLOSED + FORCE_CLOSED) Bay-4 transactions across 81 assignees — 2,762 LOAD + 939 RECEIVE. Top assignee ARNULFO MUNGUIA 955. GURUNANDA → Arnulfo at Bay-4 doors: <strong className="text-[#f4f4f6]">921</strong> (920 LOAD + 1 RECEIVE).</li>
+              <li><strong className="text-[#f59e0b]">RECONCILIATION — all-time GURUNANDA → Arnulfo (921, not 912 or 871):</strong> the BAM search-by-paging <em>aggregate</em> totalCount is non-deterministic when filtered per door — individual dockId queries intermittently return 0/null and whole-set counts drift (Bay-4 all-assignee closed total observed at 3,673 / 3,699 / 3,701). Any figure built by summing per-door counts can silently drop a door: the earlier 871 was exactly this (920 − 50, with DOCK58 transiently returning 0) and 848 was 920 − 72 (DOCK55 → 0). The authoritative derivation uses ONE facility-wide query per task type (customerId=ORG-655875, assigneeUserId=89, statuses CLOSED+FORCE_CLOSED) then a client-side dockId ∈ Bay-4 filter, with rows == totalCount verified: LOAD 1,156 rows facility-wide → 920 on Bay-4 doors (236 on other docks); RECEIVE 2 rows → 1 on a Bay-4 door (TASK-5197246, DOCK69). Reproduced 3/3 passes. &quot;GURUNANDA, LLC&quot; = ORG-655875 is the only Gurunanda <em>customer</em> org (ORG-697480 &quot;GURUNANDA TRANSFER&quot; is RETAILER-only and adds 0).</li>
+              <li><strong className="text-[#f59e0b]">Arnulfo identity caveat:</strong> &quot;ARNULFO MUNGUIA&quot; matches two employees. uid <strong>89</strong> (amunguia, employee code 229G) is the id on every Bay-4 task row; its migrated duplicate uid <strong>1948070158297014384</strong> (employee229G, same code 229G) adds 0 tasks, so matching both id forms is safe and changes nothing. A <em>different</em> employee, uid <strong>1948070158297014318</strong> (employee0669), shares the same name and adds 7 Bay-4 closed LOADs — including it would give 928 (927 LOAD + 1 RECEIVE). The headline figure uses uid 89.</li>
               <li><strong className="text-[#7c3aed]">&quot;Guru live out / in assign to Arnulfo&quot; re-verified:</strong> still NO exact literal match. Load-task and receive-task records expose no task-name/title/subject field at all (only assigneeUserName, dockName, driverName); note/sysNote/tags were empty on these rows, and a keyword probe against the general-task search ignored the keyword (returned an identical 113 rows for three different keyword strings), so it is not usable as a name-search. Interpretation holds: GURUNANDA, LLC (ORG-655875) dock transactions assigned to Arnulfo Munguia (assigneeUserId=89). All core metrics sourced from live WISE/WMS queries, Friday 2026-09-11 11:44:41 PDT (UTC window 18:43:11Z → 18:44:53Z). API timestamps are UTC; durations aged UTC → 11:44:41 PDT.</li>
             </ul>
           </div>

@@ -35,6 +35,19 @@
  *   2026-09-11T00:00:00 → 23:59:59. The loads set honours only appointmentTimeFrom, so today's
  *   load denominator was taken as the 2026-09-11 vs 2026-09-12 from-population difference
  *   (389 − 270 = 119) and today's loaded count likewise (LOADED 1−0 + SHIPPED 23−2 = 22).
+ *
+ *   RECONCILIATION NOTE (all-time GURUNANDA → Arnulfo):
+ *   The WMS BAM search-by-paging AGGREGATE (totalCount) is NON-DETERMINISTIC when filtered per
+ *   door: individual dockId queries intermittently return 0/null, and whole-set counts drift
+ *   (Bay-4 all-assignee closed total observed at 3673 / 3699 / 3701 across passes). Any figure
+ *   built by summing per-door totalCount is therefore unreliable and can silently lose a door.
+ *   The authoritative figures below use a SINGLE facility-wide query per task type, then a
+ *   client-side dockId ∈ Bay-4 filter, with rows == totalCount verified on every pass:
+ *     LOAD    : customerId=ORG-655875, assigneeUserId=89, statuses CLOSED+FORCE_CLOSED → 1,156
+ *               rows facility-wide, of which 920 sit on Bay-4 doors (236 on non-Bay-4 docks).
+ *     RECEIVE : same filters → 2 rows facility-wide, 1 on a Bay-4 door (TASK-5197246, DOCK69).
+ *   Reproduced 3/3 passes. Both published figures (912 and a transient 871) are superseded; the
+ *   delta is a derivation artifact, not a business change.
  */
 
 export type DoorStatus = "Occupied" | "Reserved" | "Available";
@@ -143,8 +156,10 @@ export const assigneeSummaries: AssigneeSummary[] = [
 
 // All-time assignment counts (CLOSED + FORCE_CLOSED) for Bay 4 DOCK50–DOCK72.
 // RE-DERIVED LIVE in this refresh (2026-09-11T18:46:43Z → 18:47:41Z) by summing per-door
-// totalCount over all 23 doors for load-task + receive-task with statuses CLOSED,FORCE_CLOSED.
-export const allTimeClosedTotal = 3699;
+// totalCount over all 23 doors (unstable — see RECONCILIATION NOTE) and re-verified with a
+// robust row-based pass (rows == totalCount per door, null-response retry), reproduced 3/3:
+// 2,762 LOAD + 939 RECEIVE = 3,701 closed transactions.
+export const allTimeClosedTotal = 3701;
 export const allTimeDistinctAssignees = 81;
 export const allTimeAssigneeSummaries: AssigneeSummary[] = [
   { name: "ARNULFO MUNGUIA", taskCount: 955 },
@@ -155,16 +170,25 @@ export const allTimeAssigneeSummaries: AssigneeSummary[] = [
   { name: "Caren Cubides", taskCount: 147 },
   { name: "JULIO CESAR ALVARADO", taskCount: 113 },
   { name: "MARTIN MUNGUIA", taskCount: 106 },
-  { name: "Fatima Ponce", taskCount: 92 },
+  { name: "Fatima Ponce", taskCount: 93 },
   { name: "David Ramirez Selva", taskCount: 76 },
 ];
 
-// "GURUNANDA → Arnulfo" all-time at Bay-4 doors, RE-DERIVED LIVE in this refresh
-// (2026-09-11T18:47:53Z → 18:48:12Z): customerId ORG-655875 + assigneeUserId 89 summed over
-// all 23 doors, statuses CLOSED,FORCE_CLOSED = 870 LOAD + 1 RECEIVE = 871.
-export const guruArnulfoAllTimeTotal = 871;
-export const guruArnulfoAllTimeLoad = 870;
+// "GURUNANDA → Arnulfo" all-time at Bay-4 doors — RECONCILED, row-based, single-query derivation.
+// Customer: GURUNANDA, LLC = ORG-655875 (the only Gurunanda CUSTOMER/TITLE org; ORG-697480
+// "GURUNANDA TRANSFER" is a RETAILER record and contributes 0 to Arnulfo's Bay-4 closed loads).
+// Assignee: "ARNULFO MUNGUIA" resolves to TWO people —
+//   uid 89            (amunguia,      employee code 229G)  ← the id used on all Bay-4 task rows
+//   uid 1948070158297014384 (employee229G, code 229G)      ← migrated duplicate of 229G, +0 tasks
+//   uid 1948070158297014318 (employee0669, code 0669)      ← a DIFFERENT employee, +7 LOAD tasks
+// Filtering uid 89 alone: 920 LOAD + 1 RECEIVE = 921 (reproduced 3/3 passes).
+// Including the same-named employee 0669 gives 927 LOAD + 1 RECEIVE = 928.
+export const guruArnulfoAllTimeTotal = 921;
+export const guruArnulfoAllTimeLoad = 920;
 export const guruArnulfoAllTimeReceive = 1;
+// Same-named second employee (code 0669) — shown only as a caveat, NOT in the headline figure.
+export const guruArnulfoAltSameNameLoad = 927;
+export const guruArnulfoAltSameNameTotal = 928;
 
 // Mix: 2 LOAD (outbound) + 7 RECEIVE (inbound) = 9 open tasks at Bay 4 doors (2026-09-11 11:44
 // PDT snapshot). Prior 09-11 09:55 PDT snapshot was 3 LOAD + 4 RECEIVE = 7.
