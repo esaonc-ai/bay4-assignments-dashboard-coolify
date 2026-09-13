@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50–DOCK72 &nbsp;|&nbsp; September 13, 2026 &nbsp;|&nbsp; Last refreshed: Sep 13 ~07:07 PDT
+              DOCK50–DOCK72 &nbsp;|&nbsp; September 13, 2026 &nbsp;|&nbsp; Last refreshed: Sep 13 ~09:45 PDT
             </p>
           </div>
           {/* Facility badge */}
@@ -134,7 +134,7 @@ export default function DashboardPage() {
           <div className="mt-3 bg-[#141419] border border-[#1e1e2a] rounded-xl overflow-hidden">
             <div className="px-5 py-2.5 bg-[#0a0a0f] border-b border-[#1e1e2a]">
               <span className="text-xs font-semibold text-[#71717a] uppercase tracking-wider">
-                All-Time Assignments (DOCK50–DOCK72) — recomputed live 09/13 ~07:07 PDT (3,710 closed / 81 assignees)
+                All-Time Assignments (DOCK50–DOCK72) — recomputed live 09/13 ~09:45 PDT (3,710 closed / 81 assignees)
               </span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-5 py-3">
@@ -175,7 +175,7 @@ export default function DashboardPage() {
                 ★ No exact literal match for &quot;Guru live out / in assign to Arnulfo&quot; — interpreted as GURUNANDA dock load/receive transactions assigned to Arnulfo
               </span>
               <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                ARNULFO MUNGUIA (userId=89) has 3 open tasks at Bay 4 DOCK50–DOCK72 — 2 LOAD outbound (both GURUNANDA) + 1 NEW receive (KARAKA). All-time (GURUNANDA → Arnulfo): <strong className="text-[#f4f4f6]">913</strong> closed transactions at Bay-4 doors (912 LOAD + 1 RECEIVE) — re-derived live 2026-09-13 ~07:07 PDT with the binding <code>customerIds</code> array filter (rows == totalCount, re-verified live). Below is the current snapshot.
+                ARNULFO MUNGUIA (userId=89) has 3 open tasks at Bay 4 DOCK50–DOCK72 — 2 LOAD outbound (both GURUNANDA) + 1 NEW receive (KARAKA). All-time (GURUNANDA → Arnulfo): <strong className="text-[#f4f4f6]">913</strong> closed transactions at Bay-4 doors (912 LOAD + 1 RECEIVE) — re-derived live 2026-09-13 ~09:45 PDT with the binding <code>customerIds</code> array filter (rows == totalCount, re-verified live). Below is the current snapshot.
               </span>
             </div>
 
@@ -186,16 +186,16 @@ export default function DashboardPage() {
                   Arnulfo Open Bay 4 Tasks (3)
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <strong>DOCK51:</strong> TASK-5365623 (LOAD, IN_PROGRESS, 1d 17h 47m)
+                  <strong>DOCK51:</strong> TASK-5365623 (LOAD, IN_PROGRESS, 1d 20h 25m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK54:</strong> TASK-5338695 (LOAD, ⚠ STALE, 36d 14h 37m)
+                  <strong>DOCK54:</strong> TASK-5338695 (LOAD, ⚠ STALE, 36d 17h 15m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
                   <strong>DOCK54:</strong> TASK-5364490 (RECEIVE, NEW — not started — KARAKA)
                 </span>
                 <span className="text-xs text-[#71717a] mt-1 italic">
-                  Total: 3 tasks (2 LOAD + 1 RECEIVE). 2 GURUNANDA + 1 KARAKA. All-time: 913 at Bay-4 doors (912 LOAD + 1 RECEIVE, customerIds-filtered, re-verified ~07:07 PDT). No other open Bay-4 task is assigned to Arnulfo.
+                  Total: 3 tasks (2 LOAD + 1 RECEIVE). 2 GURUNANDA + 1 KARAKA. All-time: 913 at Bay-4 doors (912 LOAD + 1 RECEIVE, customerIds-filtered, re-verified ~09:45 PDT). No other open Bay-4 task is assigned to Arnulfo.
                 </span>
               </div>
 
@@ -208,31 +208,31 @@ export default function DashboardPage() {
                   <span className="text-[#f59e0b] font-semibold">ARNULFO MUNGUIA:</span> 3 open (2 LOAD — DOCK51 + DOCK54 STALE; 1 RECEIVE NEW — DOCK54)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">JEROME ARANDA:</span> 2 open (RECEIVE — DOCK55, 1d 17h 59m; RECEIVE NEW — DOCK55)
+                  <span className="text-[#22c55e] font-semibold">JEROME ARANDA:</span> 2 open (RECEIVE — DOCK55, 1d 20h 37m; RECEIVE NEW — DOCK55)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#7c3aed] font-semibold">EDUARDO MEJIA:</span> 1 open (LOAD — DOCK51, 1d 12h 50m)
+                  <span className="text-[#7c3aed] font-semibold">EDUARDO MEJIA:</span> 1 open (LOAD — DOCK51, 1d 15h 28m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#7c3aed] font-semibold">BARTOLO RAMIREZ:</span> 1 open (LOAD — DOCK53, 1d 17h 08m)
+                  <span className="text-[#7c3aed] font-semibold">BARTOLO RAMIREZ:</span> 1 open (LOAD — DOCK53, 1d 19h 46m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#ef4444] font-semibold">JULIO CESAR ALVARADO:</span> 1 open (LOAD — DOCK55, 44d 19h 33m ⚠)
+                  <span className="text-[#ef4444] font-semibold">JULIO CESAR ALVARADO:</span> 1 open (LOAD — DOCK55, 44d 22h 11m ⚠)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#7c3aed] font-semibold">DANIELA GONZALEZ:</span> 1 open (RECEIVE — DOCK72, 1d 09h 59m)
+                  <span className="text-[#7c3aed] font-semibold">DANIELA GONZALEZ:</span> 1 open (RECEIVE — DOCK72, 1d 12h 37m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#7c3aed] font-semibold">RUFINO MUNGUIA:</span> 1 open (RECEIVE — DOCK62, 1d 16h 50m)
+                  <span className="text-[#7c3aed] font-semibold">RUFINO MUNGUIA:</span> 1 open (RECEIVE — DOCK62, 1d 19h 27m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
                   <span className="text-[#7c3aed] font-semibold">JORGE ANTONIO FRANCO:</span> 1 open (RECEIVE NEW — DOCK62)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#7c3aed] font-semibold">CANDY MENDEZ:</span> 1 open (RECEIVE — DOCK53, 1d 15h 43m)
+                  <span className="text-[#7c3aed] font-semibold">CANDY MENDEZ:</span> 1 open (RECEIVE — DOCK53, 1d 18h 21m)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#ef4444] font-semibold">daira gonzalez:</span> 1 open (RECEIVE — DOCK50, 326d 17h 45m ⚠)
+                  <span className="text-[#ef4444] font-semibold">daira gonzalez:</span> 1 open (RECEIVE — DOCK50, 326d 20h 23m ⚠)
                 </span>
               </div>
 
@@ -265,20 +265,20 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">7 Occupied / 0 Reserved / 16 Available</strong> — door utilization is task-derived at the 2026-09-13 07:07:00 PDT snapshot: 7 doors with an in-progress task (DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK62, DOCK72), no NEW-only reservations, 16 doors with no open load/receive task. 7 doors carry an active assignment (30.4%). No population change vs the 09-12 16:35 PDT snapshot (7 / 0 / 16) — the same 7 doors carry the open tasks; only the task ages advanced ~14h32m. (Location API dockStatus remains unreliable — it reports 19 of 23 Bay-4 doors OCCUPIED; task-derived status is authoritative.)</li>
-              <li>Open tasks: <strong className="text-[#7c3aed]">5 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">8 inbound (RECEIVE)</strong> = 13 at 07:07 PDT (unchanged vs the 09-12 16:35 PDT snapshot). 38.5% outbound / 61.5% inbound.</li>
+              <li><strong className="text-[#f4f4f6]">7 Occupied / 0 Reserved / 16 Available</strong> — door utilization is task-derived at the 2026-09-13 09:45:00 PDT snapshot: 7 doors with an in-progress task (DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK62, DOCK72), no NEW-only reservations, 16 doors with no open load/receive task. 7 doors carry an active assignment (30.4%). No population change vs the 09-13 07:07 PDT snapshot (7 / 0 / 16) — the same 7 doors carry the open tasks; only the task ages advanced ~2h38m. (Location API dockStatus remains unreliable — it reports 19 of 23 Bay-4 doors OCCUPIED; task-derived status is authoritative.)</li>
+              <li>Open tasks: <strong className="text-[#7c3aed]">5 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">8 inbound (RECEIVE)</strong> = 13 at 09:45 PDT (unchanged vs the 09-13 07:07 PDT snapshot). 38.5% outbound / 61.5% inbound.</li>
               <li><strong className="text-[#7c3aed]">Customer mix:</strong> 12 of the 13 open Bay-4 tasks are GURUNANDA, LLC (ORG-655875) — 92.3%; the other is KARAKA, LLC (DOCK54 TASK-5364490, RECEIVE NEW). Task status: 10 IN_PROGRESS + 3 NEW.</li>
-              <li><strong className="text-[#ef4444]">SEVERE ANOMALY — DOCK50 (aging 326d 17h 45m):</strong> TASK-5090739 RECEIVE remains IN_PROGRESS with endTime already set — stuck/stale, unchanged condition and still aging. Assigned to daira gonzalez. Investigate immediately.</li>
-              <li><strong className="text-[#f59e0b]">ANOMALY — DOCK54 (aging 36d 14h 37m):</strong> TASK-5338695 (LOAD) remains IN_PROGRESS with endTime already set — stale — while the same door also carries ARNULFO MUNGUIA&apos;s NEW receive TASK-5364490 (KARAKA) — two open tasks on one door.</li>
-              <li><strong className="text-[#f59e0b]">ANOMALY — DOCK55 (aging 44d 19h 33m):</strong> TASK-5331094 (LOAD) is IN_PROGRESS with endTime already set — stale. DOCK55 now carries three open tasks (TASK-5331094, TASK-5365675, TASK-5365676) across two assignees.</li>
-              <li><strong className="text-[#f59e0b]">Duplicate open task:</strong> DOCK55 carries TASK-5365675 (RECEIVE IN_PROGRESS, 1d 17h 59m) and TASK-5365676 (RECEIVE NEW) against the SAME receipt RN-5010237 — one receipt with two open dock tasks, both assigned to JEROME ARANDA.</li>
-              <li><strong className="text-[#22c55e]">Schedule % (today, 2026-09-13 — Sunday, facility-wide, ~07:07 PDT):</strong> scheduled inbounds <strong className="text-[#f4f4f6]">0 → n/a</strong>; scheduled outbound loads <strong className="text-[#f4f4f6]">0 → n/a</strong>. The binding receipt <code>appointmentTime</code> window for the 2026-09-13 local day returns no receipts and the load <code>appointmentTimePeriod</code> array filter returns no loads — the facility&apos;s appointment population runs 2026-09-11 → 2026-09-12 → 2026-09-14 with a Sunday gap — so both denominators are 0 and the metrics render as n/a rather than a fabricated percentage.</li>
+              <li><strong className="text-[#ef4444]">SEVERE ANOMALY — DOCK50 (aging 326d 20h 23m):</strong> TASK-5090739 RECEIVE remains IN_PROGRESS with endTime already set — stuck/stale, unchanged condition and still aging. Assigned to daira gonzalez. Investigate immediately.</li>
+              <li><strong className="text-[#f59e0b]">ANOMALY — DOCK54 (aging 36d 17h 15m):</strong> TASK-5338695 (LOAD) remains IN_PROGRESS with endTime already set — stale — while the same door also carries ARNULFO MUNGUIA&apos;s NEW receive TASK-5364490 (KARAKA) — two open tasks on one door.</li>
+              <li><strong className="text-[#f59e0b]">ANOMALY — DOCK55 (aging 44d 22h 11m):</strong> TASK-5331094 (LOAD) is IN_PROGRESS with endTime already set — stale. DOCK55 now carries three open tasks (TASK-5331094, TASK-5365675, TASK-5365676) across two assignees.</li>
+              <li><strong className="text-[#f59e0b]">Duplicate open task:</strong> DOCK55 carries TASK-5365675 (RECEIVE IN_PROGRESS, 1d 20h 37m) and TASK-5365676 (RECEIVE NEW) against the SAME receipt RN-5010237 — one receipt with two open dock tasks, both assigned to JEROME ARANDA.</li>
+              <li><strong className="text-[#22c55e]">Schedule % (today, 2026-09-13 — Sunday, facility-wide, ~09:45 PDT):</strong> scheduled inbounds <strong className="text-[#f4f4f6]">0 → n/a</strong>; scheduled outbound loads <strong className="text-[#f4f4f6]">0 → n/a</strong>. The binding receipt <code>appointmentTime</code> window for the 2026-09-13 local day returns no receipts and the load <code>appointmentTimePeriod</code> array filter returns no loads — the facility&apos;s appointment population runs 2026-09-11 → 2026-09-12 → 2026-09-14 with a Sunday gap — so both denominators are 0 and the metrics render as n/a rather than a fabricated percentage. For reference, live-verified neighbour days: 2026-09-11 = 34 scheduled receipts (1 received) and 115 scheduled loads (91 loaded); 2026-09-14 = 28 scheduled receipts (0 received) and 122 scheduled loads (0 loaded).</li>
               <li><strong className="text-[#a1a1aa]">All-time rollup RE-VERIFIED LIVE this refresh (row-based; rows == totalCount across all 23 doors × both task types)</strong>: <strong className="text-[#f4f4f6]">3,710</strong> closed (CLOSED + FORCE_CLOSED) Bay-4 transactions across 81 display names (91 user ids) — 2,763 LOAD + 947 RECEIVE. Top assignee ARNULFO MUNGUIA 955. GURUNANDA → Arnulfo at Bay-4 doors: <strong className="text-[#f4f4f6]">913</strong> (912 LOAD + 1 RECEIVE).</li>
               <li><strong className="text-[#ef4444]">FILTER CORRECTION — all-time GURUNANDA → Arnulfo is 913, not 921:</strong> the WMS task searches bind the customer filter ONLY as the array parameter <code>customerIds</code>; the singular <code>customerId</code> is silently IGNORED. With <code>customerIds=[ORG-655875]</code>: uid-89 closed loads = 1,115 facility-wide → 912 on Bay-4 doors. The receive side is 1 (TASK-5197246, DOCK69). Re-verified live this refresh.</li>
-              <li><strong className="text-[#f59e0b]">TIMESTAMP BASIS — durations are aged on UTC timestamps:</strong> the WMS API returns UTC wall-clock timestamps. Durations are aged UTC → 2026-09-13 07:07:00 PDT, the same basis as every prior snapshot, so the values stay comparable across snapshots.</li>
+              <li><strong className="text-[#f59e0b]">TIMESTAMP BASIS — durations aged task startTime → snapshot instant:</strong> task timestamps come back on the facility-local (America/Los_Angeles) wall clock — confirmed this refresh, since appointment times cluster in 08:00–14:00 local operating hours. Durations are aged on that same wall-clock basis to 2026-09-13 09:45:00 PDT; because start and snapshot share one frame the value is independent of the UTC offset, so it stays comparable across snapshots.</li>
               <li><strong className="text-[#f59e0b]">Door-ID correction:</strong> Bay-4 dock ids are NOT sequential. Live-verified this refresh: DOCK50=570, 51=554, 52=556, 53=552, 54=564, 55=560, 56=575, 57=563, 58=572, 59=571, 60=565, 61=567, 62=566, 63=568, 64=559, 65=573, 66=576, 67=577, 68=574, 69=578, 70=579, 71=580, 72=587.</li>
               <li><strong className="text-[#f59e0b]">Arnulfo identity caveat (corrected):</strong> uid <strong>89</strong> (amunguia, employee code 229G) is the id on every Bay-4 task row. A <em>different</em> employee, uid <strong>1948070158297014318</strong> (employee code 0669), shares the name and adds 7 Bay-4 GURUNANDA closed LOADs — including him would give 920 (919 LOAD + 1 RECEIVE). The headline figure uses uid 89.</li>
-              <li><strong className="text-[#7c3aed]">&quot;Guru live out / in assign to Arnulfo&quot; re-verified:</strong> still NO exact literal match. Load-task and receive-task records expose no task-name field; the interpretation holds: GURUNANDA, LLC (ORG-655875) dock transactions assigned to Arnulfo Munguia (assigneeUserId=89). All core metrics sourced from live WISE/WMS queries — Sunday 2026-09-13 07:07:00 PDT (UTC window 2026-09-13T14:07:02Z → 14:07:27Z).</li>
+              <li><strong className="text-[#7c3aed]">&quot;Guru live out / in assign to Arnulfo&quot; re-verified:</strong> still NO exact literal match. Load-task and receive-task records expose no task-name field; the interpretation holds: GURUNANDA, LLC (ORG-655875) dock transactions assigned to Arnulfo Munguia (assigneeUserId=89). All core metrics sourced from live WISE/WMS queries — Sunday 2026-09-13 09:45:00 PDT (UTC window 2026-09-13T16:43:36Z → 16:46:30Z).</li>
             </ul>
           </div>
         </section>
@@ -288,7 +288,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: September 13, 2026 ~07:07 PDT</span>
+          <span>Last refreshed: September 13, 2026 ~09:45 PDT</span>
         </div>
       </footer>
     </div>
