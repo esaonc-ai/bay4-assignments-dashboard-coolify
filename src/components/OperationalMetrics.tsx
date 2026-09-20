@@ -9,6 +9,7 @@ interface OperationalMetricsProps {
   scheduledOutboundOrders: number;
   pctInboundReceived: number;
   pctOutboundLoaded: number;
+  scheduleNote?: string;
 }
 
 const MIX_COLORS: Record<string, string> = {
@@ -27,6 +28,7 @@ export default function OperationalMetrics({
   scheduledOutboundOrders,
   pctInboundReceived,
   pctOutboundLoaded,
+  scheduleNote = "UNAVAILABLE — not reported",
 }: OperationalMetricsProps) {
   const total = mix[0]?.total || 1;
 
@@ -106,7 +108,7 @@ export default function OperationalMetrics({
               —
             </span>
             <span className="text-xs text-[#71717a]">
-              UNAVAILABLE — BAM endpoints returning SQL errors
+              {scheduleNote}
             </span>
           </>
         )}
@@ -134,7 +136,7 @@ export default function OperationalMetrics({
               —
             </span>
             <span className="text-xs text-[#71717a]">
-              UNAVAILABLE — BAM endpoints returning SQL errors
+              {scheduleNote}
             </span>
           </>
         )}
