@@ -8,8 +8,8 @@ BASE = os.environ["WMS_BASE_URL"].rstrip("/")
 HDRS = {"Authorization": os.environ["WMS_AUTHORIZATION"], "x-tenant-id": os.environ["WMS_TENANT_ID"],
         "x-facility-id": os.environ["WMS_FACILITY_ID"], "Content-Type": "application/json"}
 PAGE_CAP = 200
-BOOT = "2026-10-01"                       # facility-local operating day (America/Los_Angeles)
 LA = timezone(timedelta(hours=-7))        # PDT
+BOOT = datetime.now(timezone.utc).astimezone(LA).strftime("%Y-%m-%d")  # facility-local operating day (America/Los_Angeles)
 
 def post(path, body, tries=4):
     data = json.dumps(body).encode(); last = None
