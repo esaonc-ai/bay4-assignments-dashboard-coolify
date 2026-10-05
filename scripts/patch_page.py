@@ -1,52 +1,90 @@
 #!/usr/bin/env python3
-"""Atomically apply the remaining Data-Notes prose refreshes to src/app/page.tsx."""
+"""Apply the 2026-10-04 ~19:07 PDT WISE/WMS refresh to src/app/page.tsx (prose + stamps).
+
+Every replacement is anchored on the exact prior-refresh (2026-10-04 ~14:48 PDT) string so a
+partial/mismatched apply fails loudly instead of silently drifting.
+"""
 import sys
 
 P = "src/app/page.tsx"
 t = open(P, encoding="utf-8").read()
 
 R = [
- ("(2026-09-30 ~19:06 PDT). Below is the current live snapshot (2026-09-30 ~19:06 PDT).",
-  "(2026-10-01 ~11:27 PDT). Below is the current live snapshot (2026-10-01 ~11:27 PDT)."),
- ("7 Occupied / 1 Reserved / 15 Available / 2 anomalies",
-  "8 Occupied / 0 Reserved / 15 Available / 2 anomalies"),
- ("at the 2026-09-30 ~19:06 PDT snapshot: 7 doors with an in-progress open task (DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK63, DOCK69), 1 door holding only a not-started NEW task (DOCK59), 15 doors with no open load/receive task.",
-  "at the 2026-10-01 ~11:27 PDT snapshot: 8 doors with an in-progress open task (DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK59, DOCK63, DOCK69), 0 doors holding only a not-started NEW task, 15 doors with no open load/receive task."),
- ("reports 15 Bay-4 doors OCCUPIED / 1 RESERVED / 7 AVAILABLE (its <code>spaceStatus</code> reports 10 OCCUPIED / 13 EMPTY)",
-  "reports 16 Bay-4 doors OCCUPIED / 1 RESERVED / 6 AVAILABLE (its <code>spaceStatus</code> reports 11 OCCUPIED / 12 EMPTY)"),
- ("from task-derived status (7 vs 15)",
+ # ── Assigned Activity banner ────────────────────────────────────────────────
+ ("— <strong className=\"text-[#f4f4f6]\">recomputed in this refresh</strong> from a full row-level rescan (2026-10-04 ~14:48 PDT). Below is the current live snapshot (2026-10-04 ~14:48 PDT).",
+  "— <strong className=\"text-[#f4f4f6]\">carried forward unchanged this refresh</strong> (last full rescan 2026-10-04 ~14:48 PDT). Below is the current live snapshot (2026-10-04 ~19:07 PDT)."),
+
+ # ── All-time sub-block header ───────────────────────────────────────────────
+ ("All-Time Assignments (DOCK50–DOCK72) — full recomputation {allTimeLastRecomputed} ({allTimeClosedTotal.toLocaleString()} closed / {allTimeDistinctAssignees} assignees); re-scanned in this refresh",
+  "All-Time Assignments (DOCK50–DOCK72) — last full recomputation {allTimeLastRecomputed} ({allTimeClosedTotal.toLocaleString()} closed / {allTimeDistinctAssignees} assignees); carried forward this refresh (no Bay-4 closes since)"),
+
+ # ── Arnulfo column footnote ────────────────────────────────────────────────
+ ("All-time (fresh): {guruArnulfoAllTimeTotal} at Bay-4 doors",
+  "All-time (unchanged): {guruArnulfoAllTimeTotal} at Bay-4 doors"),
+
+ # ── Data Notes: door utilization ───────────────────────────────────────────
+ ("door utilization is task-derived at the 2026-10-04 ~14:48 PDT snapshot: 8 doors with an in-progress open task (DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK56, DOCK68, DOCK69), 0 doors holding only a not-started NEW task, 15 doors with no open load/receive task.",
+  "door utilization is task-derived at the 2026-10-04 ~19:07 PDT snapshot: 8 doors with an in-progress open task (DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK56, DOCK68, DOCK69), 0 doors holding only a not-started NEW task, 15 doors with no open load/receive task."),
+
+ # ── Data Notes: Location-API cross check ───────────────────────────────────
+ ("reports 17 Bay-4 doors OCCUPIED / 2 RESERVED / 4 AVAILABLE (its <code>spaceStatus</code> reports 10 OCCUPIED / 13 EMPTY)",
+  "reports 16 Bay-4 doors OCCUPIED / 2 RESERVED / 5 AVAILABLE (its <code>spaceStatus</code> reports 10 OCCUPIED / 13 EMPTY)"),
+ ("from task-derived status (8 vs 17)",
   "from task-derived status (8 vs 16)"),
- ("Task status: 10 IN_PROGRESS + 3 NEW.</li>",
-  "Task status: 12 IN_PROGRESS + 1 NEW.</li>"),
- ("DOCK54 (aging 54d 9h 37m):</strong> TASK-5338695 (LOAD, endTime 2026-08-10) remains IN_PROGRESS \u2014 stale \u2014 on a door that also carries TASK-5380820 (LOAD, IN_PROGRESS 1d 13h 59m) and TASK-5382462 (LOAD, NEW); all three DOCK54 tasks are ARNULFO MUNGUIA.",
-  "DOCK54 (aging 54d 18h 57m):</strong> TASK-5338695 (LOAD, endTime 2026-08-10) remains IN_PROGRESS \u2014 stale \u2014 on a door that also carries TASK-5380820 (LOAD, IN_PROGRESS 1d 23h 19m, ARNULFO MUNGUIA) and TASK-5382462 (LOAD, IN_PROGRESS 2h 4m, DANIEL BELTRAN)."),
- ("Wednesday 2026-09-30</strong> and its appointment windows return <strong className=\"text-[#f4f4f6]\">111 loads</strong> and <strong className=\"text-[#f4f4f6]\">45 receipts</strong>. The outbound tile reports <strong className=\"text-[#f4f4f6]\">85.6%</strong> (95 loaded of 111; 95 SHIPPED, 16 still NEW) and the inbound tile reports <strong className=\"text-[#f4f4f6]\">35.6%</strong> (16 received of 45; 15 CLOSED, 12 IN_PROGRESS, 17 IMPORTED and 1 EXCEPTION).",
-  "Thursday 2026-10-01</strong> and its appointment windows return <strong className=\"text-[#f4f4f6]\">129 loads</strong> and <strong className=\"text-[#f4f4f6]\">21 receipts</strong>. The outbound tile reports <strong className=\"text-[#f4f4f6]\">34.9%</strong> (45 loaded of 129; 29 SHIPPED + 16 LOADED, 29 LOADING, 6 checked-in and 49 still NEW) and the inbound tile reports <strong className=\"text-[#f4f4f6]\">0.0%</strong> (0 received of 21; 8 IN_PROGRESS \u2014 receiving started, 11 IMPORTED, 1 OPEN and 1 EXCEPTION)."),
- ("i.e. [&quot;2026-09-30T00:00:00&quot;,&quot;2026-09-30T23:59:59&quot;]",
-  "i.e. [&quot;2026-10-01T00:00:00&quot;,&quot;2026-10-01T23:59:59&quot;]"),
- ("(2,888 LOAD + 1,037 RECEIVE, statuses CLOSED/FORCE_CLOSED)",
-  "(2,890 LOAD + 1,039 RECEIVE, statuses CLOSED/FORCE_CLOSED)"),
- ("(2026-10-01T02:06:59Z). Query window 2026-10-01T02:06:59Z \u2192 2026-10-01T02:06:59Z.",
-  "(2026-10-01T18:27:09Z). Query window 2026-10-01T18:27:09Z \u2192 2026-10-01T18:27:09Z."),
- ("Core live metrics sourced from live WISE/WMS queries \u2014 Wednesday 2026-09-30 ~19:06 PDT (UTC snapshot 2026-10-01T02:06:59Z).",
-  "Core live metrics sourced from live WISE/WMS queries \u2014 Thursday 2026-10-01 ~11:27 PDT (UTC snapshot 2026-10-01T18:27:09Z)."),
- ("verified on all 6 open Bay-4 tasks assigned to &quot;ARNULFO MUNGUIA&quot;",
-  "verified on all 7 open Bay-4 tasks assigned to &quot;ARNULFO MUNGUIA&quot;"),
- ("<span>Last refreshed: {refreshDateLong} ~19:06 PDT</span>",
-  "<span>Last refreshed: {refreshDateLong} ~11:27 PDT</span>"),
+
+ # ── Data Notes: mix timestamp ──────────────────────────────────────────────
+ ("= 12 at ~14:48 PDT. 50.0% outbound / 50.0% inbound.",
+  "= 12 at ~19:07 PDT. 50.0% outbound / 50.0% inbound."),
+
+ # ── Data Notes: DOCK50 severe anomaly ──────────────────────────────────────
+ ("SEVERE ANOMALY — DOCK50 (aging 348d 1h 27m):",
+  "SEVERE ANOMALY — DOCK50 (aging 348d 5h 45m):"),
+ ("DOCK50 also carries TASK-5381269 (LOAD, IN_PROGRESS 4d 23h 19m) under ARNULFO MUNGUIA.",
+  "DOCK50 also carries TASK-5381269 (LOAD, IN_PROGRESS 5d 3h 37m) under ARNULFO MUNGUIA."),
+
+ # ── Data Notes: DOCK54 anomaly ─────────────────────────────────────────────
+ ("ANOMALY — DOCK54 (aging 57d 22h 19m):</strong> TASK-5338695 (LOAD, endTime 2026-08-10) remains IN_PROGRESS — stale — on a door that also carries TASK-5380820 (LOAD, IN_PROGRESS 5d 2h 40m, ARNULFO MUNGUIA) and TASK-5382462 (LOAD, IN_PROGRESS 3d 5h 25m, ARNULFO MUNGUIA).",
+  "ANOMALY — DOCK54 (aging 58d 2h 37m):</strong> TASK-5338695 (LOAD, endTime 2026-08-10) remains IN_PROGRESS — stale — on a door that also carries TASK-5380820 (LOAD, IN_PROGRESS 5d 6h 59m, ARNULFO MUNGUIA) and TASK-5382462 (LOAD, IN_PROGRESS 3d 9h 44m, ARNULFO MUNGUIA)."),
+
+ # ── Data Notes: single sweep timestamp + prior-refresh reference ────────────
+ ("one self-consistent sweep at 2026-10-04T21:48:39Z (2026-10-04 ~14:48 PDT).",
+  "one self-consistent sweep at 2026-10-05T02:07:00Z (2026-10-04 ~19:07 PDT)."),
+ ("is unchanged from the prior 2026-10-04 ~11:58 PDT refresh, with only task durations aged.",
+  "is unchanged from the prior 2026-10-04 ~14:48 PDT refresh (identical open task IDs), with only task durations aged."),
+
+ # ── Data Notes: schedule narrative (drop stale prior/next-day counts) ───────
+ ("The last reported operating day (Thursday 2026-10-01) carried 120 loads / 20 receipts, and the next operating day is Monday 2026-10-05 (154 loads / 22 receipts).",
+  "The next operating day is Monday 2026-10-05."),
+
+ # ── Data Notes: all-time block ─────────────────────────────────────────────
+ ("<strong className=\"text-[#22c55e]\">All-time cumulative figures RECOMPUTED this refresh:</strong> the <strong className=\"text-[#f4f4f6]\">{allTimeClosedTotal.toLocaleString()}</strong> closed Bay-4 transactions across <strong className=\"text-[#f4f4f6]\">{allTimeDistinctAssignees}</strong> display names (top-10 list above) and the GURUNANDA → Arnulfo cumulative <strong className=\"text-[#f4f4f6]\">{guruArnulfoAllTimeTotal}</strong> ({guruArnulfoAllTimeLoad} LOAD + {guruArnulfoAllTimeReceive} RECEIVE) come from a full row-level rescan performed in this refresh — 23 doors × 2 task types (2,896 LOAD + 1,047 RECEIVE, statuses CLOSED/FORCE_CLOSED). They are fresh, not carried forward.",
+  "<strong className=\"text-[#22c55e]\">All-time cumulative figures — CARRIED FORWARD UNCHANGED this refresh:</strong> the <strong className=\"text-[#f4f4f6]\">{allTimeClosedTotal.toLocaleString()}</strong> closed Bay-4 transactions across <strong className=\"text-[#f4f4f6]\">{allTimeDistinctAssignees}</strong> display names (top-10 list above) and the GURUNANDA → Arnulfo cumulative <strong className=\"text-[#f4f4f6]\">{guruArnulfoAllTimeTotal}</strong> ({guruArnulfoAllTimeLoad} LOAD + {guruArnulfoAllTimeReceive} RECEIVE) are unchanged from the full row-level rescan at 2026-10-04 ~14:48 PDT — 23 doors × 2 task types (2,896 LOAD + 1,047 RECEIVE, statuses CLOSED/FORCE_CLOSED). The live Bay-4 open population is identical to the prior refresh (same 12 task IDs), so no Bay-4 task could have closed in between."),
+
+ # ── Data Notes: timestamp basis ────────────────────────────────────────────
+ ("task timestamps are read on the same UTC frame as the snapshot instant (2026-10-04T21:48:39Z). Query window 2026-10-04T21:48:39Z → 2026-10-04T21:48:39Z.",
+  "task timestamps are read on the same UTC frame as the snapshot instant (2026-10-05T02:07:00Z). Query window 2026-10-05T02:07:00Z → 2026-10-05T02:07:00Z."),
+
+ # ── Data Notes: closing line ───────────────────────────────────────────────
+ ("Core live metrics sourced from live WISE/WMS queries — Sunday 2026-10-04 ~14:48 PDT (UTC snapshot 2026-10-04T21:48:39Z).",
+  "Core live metrics sourced from live WISE/WMS queries — Sunday 2026-10-04 ~19:07 PDT (UTC snapshot 2026-10-05T02:07:00Z)."),
+
+ # ── Footer stamp ───────────────────────────────────────────────────────────
+ ("<span>Last refreshed: {refreshDateLong} ~14:48 PDT</span>",
+  "<span>Last refreshed: {refreshDateLong} ~19:07 PDT</span>"),
 ]
 
 applied, skipped, missing = 0, 0, []
 for old, new in R:
-    if old in t:
-        assert t.count(old) == 1, f"multiple matches: {old[:60]}"
+    c = t.count(old)
+    if c == 1:
         t = t.replace(old, new); applied += 1
-    elif new in t:
+    elif c == 0 and t.count(new) >= 1:
         skipped += 1
     else:
-        missing.append(old[:70])
+        missing.append((c, old[:80]))
 
 open(P, "w", encoding="utf-8").write(t)
 print(f"applied={applied} skipped(already)={skipped} missing={len(missing)}")
-for m in missing: print("  MISSING:", m)
+for c, m in missing:
+    print(f"  MISSING (count={c}): {m}")
 sys.exit(1 if missing else 0)
