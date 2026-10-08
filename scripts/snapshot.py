@@ -36,7 +36,7 @@ BAY4 = {"570":"DOCK50","554":"DOCK51","556":"DOCK52","552":"DOCK53","564":"DOCK5
         "566":"DOCK62","568":"DOCK63","559":"DOCK64","573":"DOCK65","576":"DOCK66","577":"DOCK67",
         "574":"DOCK68","578":"DOCK69","579":"DOCK70","580":"DOCK71","587":"DOCK72"}
 BAY4_IDS = set(BAY4)
-CUST = {"ORG-655875":"GURUNANDA, LLC","ORG-585450":"KARAKA, LLC"}
+CUST = {"ORG-655875":"GURUNANDA, LLC","ORG-585450":"KARAKA, LLC","ORG-40858":"CMPC USA (Cut Paper and Rolls)"}
 
 NOW = datetime.now(timezone.utc).replace(microsecond=0)
 ISO = NOW.strftime("%Y-%m-%dT%H:%M:%SZ")
