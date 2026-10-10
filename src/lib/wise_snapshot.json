@@ -1,6 +1,6 @@
 {
-  "snapshotUtc": "2026-10-10T19:08:14Z",
-  "refreshStampLA": "Oct 10 ~12:08 PDT",
+  "snapshotUtc": "2026-10-10T20:29:59Z",
+  "refreshStampLA": "Oct 10 ~13:29 PDT",
   "refreshDateLong": "October 10, 2026",
   "bootDay": "2026-10-10",
   "doors": [
@@ -14,7 +14,7 @@
         "TASK-5389467",
         "TASK-5390717"
       ],
-      "duration": "353d 22h 47m",
+      "duration": "354d 0h 8m",
       "anomaly": true
     },
     {
@@ -26,7 +26,7 @@
         "TASK-5381268",
         "TASK-5389973"
       ],
-      "duration": "10d 20h 41m",
+      "duration": "10d 22h 3m",
       "anomaly": false
     },
     {
@@ -38,7 +38,7 @@
         "TASK-5390984",
         "TASK-5389140"
       ],
-      "duration": "21h 44m",
+      "duration": "23h 6m",
       "anomaly": false
     },
     {
@@ -51,7 +51,7 @@
         "TASK-5389637",
         "TASK-5390119"
       ],
-      "duration": "2d 3h 30m",
+      "duration": "2d 4h 52m",
       "anomaly": false
     },
     {
@@ -62,7 +62,7 @@
       "taskIds": [
         "TASK-5338695"
       ],
-      "duration": "63d 19h 38m",
+      "duration": "63d 21h 0m",
       "anomaly": true
     },
     {
@@ -82,7 +82,7 @@
       "taskIds": [
         "TASK-5390124"
       ],
-      "duration": "1d 16h 0m",
+      "duration": "1d 17h 22m",
       "anomaly": false
     },
     {
@@ -93,7 +93,7 @@
       "taskIds": [
         "TASK-5390129"
       ],
-      "duration": "1d 15h 46m",
+      "duration": "1d 17h 8m",
       "anomaly": false
     },
     {
@@ -104,7 +104,7 @@
       "taskIds": [
         "TASK-5390995"
       ],
-      "duration": "21h 5m",
+      "duration": "22h 26m",
       "anomaly": false
     },
     {
@@ -379,7 +379,7 @@
       "taskId": "TASK-5389422",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (2d 3h 30m)",
+      "pieces": "IN_PROGRESS (2d 4h 52m)",
       "assignee": "ARNULFO MUNGUIA",
       "door": "DOCK53"
     },
@@ -387,7 +387,7 @@
       "taskId": "TASK-5389637",
       "dns": "RECEIVE IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (2d 1h 13m)",
+      "pieces": "IN_PROGRESS (2d 2h 35m)",
       "assignee": "RUFINO MUNGUIA",
       "door": "DOCK53"
     },
@@ -395,7 +395,7 @@
       "taskId": "TASK-5390119",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (1d 15h 52m)",
+      "pieces": "IN_PROGRESS (1d 17h 14m)",
       "assignee": "EDUARDO MEJIA",
       "door": "DOCK53"
     },
@@ -403,7 +403,7 @@
       "taskId": "TASK-5381268",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (10d 20h 41m)",
+      "pieces": "IN_PROGRESS (10d 22h 3m)",
       "assignee": "ARNULFO MUNGUIA",
       "door": "DOCK51"
     },
@@ -411,7 +411,7 @@
       "taskId": "TASK-5389973",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (1d 21h 17m)",
+      "pieces": "IN_PROGRESS (1d 22h 39m)",
       "assignee": "DANIEL BELTRAN",
       "door": "DOCK51"
     },
@@ -427,7 +427,7 @@
       "taskId": "TASK-5390984",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (21h 44m)",
+      "pieces": "IN_PROGRESS (23h 6m)",
       "assignee": "DANIEL BELTRAN",
       "door": "DOCK52"
     },
@@ -435,7 +435,7 @@
       "taskId": "TASK-5390129",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (1d 15h 46m)",
+      "pieces": "IN_PROGRESS (1d 17h 8m)",
       "assignee": "PEDRO AVILA",
       "door": "DOCK57"
     },
@@ -443,7 +443,7 @@
       "taskId": "TASK-5338695",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (63d 19h 38m) \u26a0 STALE",
+      "pieces": "IN_PROGRESS (63d 21h 0m) \u26a0 STALE",
       "assignee": "ARNULFO MUNGUIA",
       "door": "DOCK54"
     },
@@ -451,7 +451,7 @@
       "taskId": "TASK-5090739",
       "dns": "RECEIVE IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (353d 22h 47m) \u26a0 STALE",
+      "pieces": "IN_PROGRESS (354d 0h 8m) \u26a0 STALE",
       "assignee": "daira gonzalez",
       "door": "DOCK50"
     },
@@ -459,7 +459,7 @@
       "taskId": "TASK-5389467",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (2d 3h 0m)",
+      "pieces": "IN_PROGRESS (2d 4h 22m)",
       "assignee": "ARNULFO MUNGUIA",
       "door": "DOCK50"
     },
@@ -467,7 +467,7 @@
       "taskId": "TASK-5390717",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (1d 0h 30m)",
+      "pieces": "IN_PROGRESS (1d 1h 52m)",
       "assignee": "ARNULFO MUNGUIA",
       "door": "DOCK50"
     },
@@ -475,7 +475,7 @@
       "taskId": "TASK-5390995",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (21h 5m)",
+      "pieces": "IN_PROGRESS (22h 26m)",
       "assignee": "ARNULFO MUNGUIA",
       "door": "DOCK58"
     },
@@ -483,7 +483,7 @@
       "taskId": "TASK-5390124",
       "dns": "LOAD IN_PROGRESS",
       "customer": "GURUNANDA, LLC",
-      "pieces": "IN_PROGRESS (1d 16h 0m)",
+      "pieces": "IN_PROGRESS (1d 17h 22m)",
       "assignee": "EDUARDO MEJIA",
       "door": "DOCK56"
     },
@@ -512,7 +512,7 @@
         "kind": "LOAD",
         "status": "IN_PROGRESS",
         "customer": "GURUNANDA, LLC",
-        "note": "IN_PROGRESS \u2014 2d 3h 30m"
+        "note": "IN_PROGRESS \u2014 2d 4h 52m"
       },
       {
         "door": "DOCK51",
@@ -520,7 +520,7 @@
         "kind": "LOAD",
         "status": "IN_PROGRESS",
         "customer": "GURUNANDA, LLC",
-        "note": "IN_PROGRESS \u2014 10d 20h 41m"
+        "note": "IN_PROGRESS \u2014 10d 22h 3m"
       },
       {
         "door": "DOCK54",
@@ -528,7 +528,7 @@
         "kind": "LOAD",
         "status": "IN_PROGRESS",
         "customer": "GURUNANDA, LLC",
-        "note": "STALE \u2014 63d 19h 38m (endTime set 2026-08-10)"
+        "note": "STALE \u2014 63d 21h 0m (endTime set 2026-08-10)"
       },
       {
         "door": "DOCK50",
@@ -536,7 +536,7 @@
         "kind": "LOAD",
         "status": "IN_PROGRESS",
         "customer": "GURUNANDA, LLC",
-        "note": "IN_PROGRESS \u2014 2d 3h 0m"
+        "note": "IN_PROGRESS \u2014 2d 4h 22m"
       },
       {
         "door": "DOCK50",
@@ -544,7 +544,7 @@
         "kind": "LOAD",
         "status": "IN_PROGRESS",
         "customer": "GURUNANDA, LLC",
-        "note": "IN_PROGRESS \u2014 1d 0h 30m"
+        "note": "IN_PROGRESS \u2014 1d 1h 52m"
       },
       {
         "door": "DOCK58",
@@ -552,7 +552,7 @@
         "kind": "LOAD",
         "status": "IN_PROGRESS",
         "customer": "GURUNANDA, LLC",
-        "note": "IN_PROGRESS \u2014 21h 5m"
+        "note": "IN_PROGRESS \u2014 22h 26m"
       }
     ],
     "count": 6,
